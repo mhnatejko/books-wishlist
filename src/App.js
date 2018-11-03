@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import fetcher from './GR_test';
+fetcher('w+kraju+niewiernych')
+
 class App extends Component {
   render() {
     return (
