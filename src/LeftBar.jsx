@@ -1,31 +1,32 @@
 import React from 'react';
 import Spinner from 'react-spinkit';
 import { connect } from 'react-redux';
-import BookCards from './BookCards';
 import { loadBooks } from './redux/actions';
+import BookCards from './BookCards';
 
-const LeftBar = ({ fetching, loadBooks}) => {
-    return (
-        <div>
-            <h2>Left</h2>
-            <button onClick={loadBooks}>load</button> 
+const LeftBar = ({ books, fetching, loadBooks}) => {
+	return (
+		<div>
+			<h2>Left</h2>
+			<button onClick={loadBooks}>load</button> 
 			{
-				fetching ? 
+				fetching 
+					? 
 					<Spinner name="circle" color="black" fadeIn="none"/>
 					:
-					<BookCards />
+					<BookCards books={books}/>
 			}      
-        </div>
-    );
+		</div>
+	);
 };
 
 const mapStateToProps = state => ({
-	fetching: state.fetching
+	fetching: state.leftBarData.fetching,
+	books: state.leftBarData.books,
 });
 
 const mapDispatchToProps = dispatch => ({
-	loadBooks: () => dispatch(loadBooks())
-})
-
+	loadBooks: () => dispatch(loadBooks('leftBarData'))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeftBar);

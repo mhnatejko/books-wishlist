@@ -1,5 +1,6 @@
 import * as CONSTANTS from './constants';
 
-export const loadBooks = () => ({
-    type: CONSTANTS.LOAD_BOOKS
+export const loadBooks = (localization) => ({
+    type: CONSTANTS.LOAD_BOOKS,
+    localization
 })
