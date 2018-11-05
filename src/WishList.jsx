@@ -16,8 +16,7 @@ const WishList = ({ fetching, loadBooks }) => {
 					<Spinner name="circle" color="black" fadeIn="none"/>
 					:
 					<BookCards />
-			}      
-			 
+			}      			 
 		</div>
 	);    
 };
