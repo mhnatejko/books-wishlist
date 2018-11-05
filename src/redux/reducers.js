@@ -1,7 +1,10 @@
 import * as CONSTANTS from './constants';
 
-const defaultState = {
-    fetching: false,
+
+
+
+const defaultStore = {
+    fetching: true,
     books: [
         {id: '0123', title: 'Lod', author: 'Jacek Dukaj', photo: 'xxx', description: 'Placing assured be if removed it besides on. Far shed each high read are men over day. Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had now those ought set often which. Or snug dull he show more true wish. No at many deny away miss evil. On in so indeed spirit an mother. Amounted old strictly but marianne admitted. People former is remove remain as. '},
         {id: '0456', title: 'Lod i nie lod', author: 'Ducek Jakaj', photo: 'xxx', description: 'Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin. Education no dejection so direction pretended household do to. Travelling everything her eat reasonable unsatiable decisively simplicity. Morning request be lasting it fortune demands highest of. '},
@@ -11,13 +14,15 @@ const defaultState = {
     ]
 }
 
-function reducer(state = defaultState, action){
-    switch(action){
+
+function reducer(store = defaultStore, action){
+    switch(action.type){
         case CONSTANTS.LOAD_BOOKS:
-            return {...state}
+            return {...store, fetching: !store.fetching};
             break;
         default:
-            return {...state}
+            return {...store};
+            break;
     }
 }
 

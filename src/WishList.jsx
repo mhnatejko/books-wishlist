@@ -1,21 +1,33 @@
-import React, { Component } from "react";
+import React from 'react';
+import { connect } from 'react-redux'; 
 import SearchSort from './SearchSort';
 import BookCards from './BookCards';
+import Spinner from 'react-spinkit';
+import { loadBooks } from './redux/actions';
 
-import { connect } from 'react-redux'; 
-
-const WishList = ({ fetching }) => {
-    return (
-        <div>
-            <h1>Your wishlist of books</h1>
+const WishList = ({ fetching, loadBooks }) => {
+	return (
+		<div>
+			<h1>Your wishlist of books</h1>
             <SearchSort />
-            {!fetching && <BookCards />}            
-        </div>
-    )    
-}
+            <button onClick={loadBooks}>load</button> 
+			{
+				fetching ? 
+					<Spinner name="circle" color="black" fadeIn="none"/>
+					:
+					<BookCards />
+			}      
+			 
+		</div>
+	);    
+};
 
 const mapStateToProps = state => ({
-    fetching: state.fetching
+	fetching: state.fetching
+});
+
+const mapDispatchToProps = dispatch => ({
+	loadBooks: () => dispatch(loadBooks())
 })
 
-export default connect(null, mapStateToProps)(WishList);
+export default connect(mapStateToProps, mapDispatchToProps)(WishList);

@@ -5,14 +5,15 @@ const key = 'key=La7pcvvUjmpkjO4bXd7yw';
 
 function searchURI(keyWord){
 	let searchURI = `${URIroot}search.xml?${key}'&q='${keyWord}`;
+	return searchURI;
 }
 
-let authorID = 18541;
+// let authorID = 18541;
 
-function authorByIdURI(authorID){
-	let authorByIdURI = `${URIroot}author/show/${authorID}?format=xml&${key}`;
-	let seriesByIdURI = `${URIroot}series/list/${authorID}.xml?${key}`;    
-}
+// function authorByIdURI(authorID){
+// 	let authorByIdURI = `${URIroot}author/show/${authorID}?format=xml&${key}`;
+// 	let seriesByIdURI = `${URIroot}series/list/${authorID}.xml?${key}`;    
+// }
 
 //get quotes by author ---based on https://goodquotesapi.herokuapp.com
 //fetch("https://goodquotesapi.herokuapp.com/author/jacek+dukaj").then(r => r.text()).then(r => console.log(r))
@@ -20,7 +21,8 @@ function authorByIdURI(authorID){
 // - /title/xxx
 // - /tag/xxx
 
-function fetcher(keyWord){    
+function fetcher(keyWord){  
+	const converterOptions = {compact: true, spaces: 4}
 	fetch(
 		searchURI(keyWord),
 		{
@@ -34,9 +36,9 @@ function fetcher(keyWord){
 	)   
 		.then(r => r.text())
 		.then(r => console.log(
-			convert.xml2js(r)
+			convert.xml2json(r, converterOptions)
 		))
-		.catch(err => console.log(err));
+		
 }
 
 export default fetcher;

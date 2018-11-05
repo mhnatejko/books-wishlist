@@ -12,27 +12,31 @@ import RightBar from './RightBar';
 import Footer from './Footer';
 
 const Routing = () => {
-    return (
-        <BrowserRouter>
-        <div>
-            <Header />
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/browser">Browser</NavLink>
-            <NavLink to="/wish-list">Wish list</NavLink>
-            <NavLink to="/about">about</NavLink>
-            <Switch>
-                <Route exact path= "/" component={Home}/>
-                <Route path= "/browser" component={Browser}/>
-                <Route path= "/wish-list" component={WishList}/>
-                <Route path= "/about" component={About}/>
-                <Route component={NoMatch}/>                
-            </Switch>
-            <LeftBar />
-            <RightBar />
-            <Footer />
-        </div>
-        </BrowserRouter>
-    )
+	return (
+		<BrowserRouter>
+			<div>
+				<div>
+					<Header />
+					<ul>
+						<NavLink to="/">Home</NavLink>
+						<NavLink to="/browser">Browser</NavLink>
+						<NavLink to="/wish-list">Wish list</NavLink>
+						<NavLink to="/about">about</NavLink>
+					</ul>
+				</div>
+				<Switch>
+					<Route exact path= "/" component={Home}/>
+					<Route path= "/browser" component={Browser}/>
+					<Route path= "/wish-list" component={WishList}/>
+					<Route path= "/about" component={About}/>
+					<Route component={NoMatch}/>                
+				</Switch>
+				<LeftBar />
+				<RightBar />
+				<Footer />
+			</div>
+		</BrowserRouter>
+	)
 }
 
 export default Routing;
