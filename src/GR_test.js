@@ -7,6 +7,10 @@ function searchURI(keyWord){
 	let searchURI = `${URIroot}search.xml?${key}'&q='${keyWord}`;
 	return searchURI;
 }
+function bookDetails(book_id){
+	return `${URIroot}/book/show/${book_id}.xml?${key}`
+}
+
 
 // let authorID = 18541;
 
@@ -21,10 +25,10 @@ function searchURI(keyWord){
 // - /title/xxx
 // - /tag/xxx
 
-function fetcher(keyWord){  
+function fetcher(keyWord, details){  
 	const converterOptions = {compact: true, spaces: 4}
 	fetch(
-		searchURI(keyWord),
+		details ? bookDetails(keyWord) : searchURI(keyWord),
 		{
 			mode: 'cors',
 			headers: {
@@ -41,5 +45,7 @@ function fetcher(keyWord){
 		
 }
 
+
 export default fetcher;
+
 

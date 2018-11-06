@@ -9,6 +9,4 @@ const BookCards = ({books}) => {
     )
 }
 
-
-
 export default BookCards;

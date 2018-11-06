@@ -1,16 +1,12 @@
 import * as CONSTANTS from './constants';
 
-
+import base_books from '../exampleResponseData/respExample';
 
 
 const defaultState = {
 	leftBarData: {    
 		fetching: true,
-		books: [
-			{id: '0123', title: 'El', author: 'Jacek Dukaj', photo: 'xxx', description: 'Placing assured be if removed it besides on. Far shed each high read are men over day. Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had now those ought set often which. Or snug dull he show more true wish. No at many deny away miss evil. On in so indeed spirit an mother. '},
-			{id: '0456', title: 'El i nie lod', author: 'Ducek Jakaj', photo: 'xxx', description: 'Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin. Education no dejection so direction pretended household do to. Travelling everything her eat reasonable unsatiable'},
-			{id: '0789', title: 'El', author: 'Jack Speaker', photo: 'xxx', description: 'Dashwood contempt on mr unlocked resolved provided of of. Stanhill wondered it it welcomed oh. Hundred no prudent he however smiling at an offence. If earnestly extremity he he propriety something admitting convinced ye. Pleasant in to although as if differed horrible.'},
-		]
+		books: base_books
 	},
 	rightBarData: {    
 		fetching: true,

@@ -7,8 +7,12 @@ import { Provider } from 'react-redux';
 import reducer from './redux/reducers';
 import * as serviceWorker from './serviceWorker';
 
-// import fetcher from './GR_test';
-// fetcher('polio')
+import base_books from './exampleResponseData/respExample';
+import fetcher from './GR_test';
+
+console.log(base_books)
+
+//fetcher('335598', true)
 
 const store = createStore(
 	reducer, 

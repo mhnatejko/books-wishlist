@@ -1,4 +1,4 @@
-let response = {
+const response = {
 	'_declaration': {
 		'_attributes': {
 			'version': '1.0',
@@ -1603,3 +1603,5 @@ let response = {
 		}
 	}
 }
+
+export default response;
