@@ -39,6 +39,8 @@ function reducer(state = defaultState, action){
 			}
 		};
 		break;
+	case CONSTANTS.SET_NEW_DATA:
+		return {...state, wishListData: {...state.wishListData, books:action.data}}
 	default:
 		return {...state};
 		break;

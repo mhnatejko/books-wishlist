@@ -9,7 +9,7 @@ const BookCard = (props) => {
             <p>average rating:{props.data.average_rating}</p>
             <p>rating counts:{props.data.ratings_count}</p>
             <p>description:{props.data.description}</p>
-            <img scr={props.data.best_book_image_url} alt={props.data.best_book_title} />
+            <img src={props.data.best_book_image_url} alt={props.data.best_book_title} />
         </div>
     )
 }

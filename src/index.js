@@ -2,21 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Routing from './Routing';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './redux/reducers';
 import * as serviceWorker from './serviceWorker';
+import thunk from 'redux-thunk';
+
 
 import base_books from './exampleResponseData/respExample';
-import fetcher from './GR_test';
-
 console.log(base_books)
 
-//fetcher('335598', true)
+
 
 const store = createStore(
-	reducer, 
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	reducer,
+	compose( 
+		applyMiddleware(thunk),
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	)
 );
 
 ReactDOM.render(
