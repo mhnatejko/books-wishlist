@@ -23,17 +23,31 @@ export function requestApi(keyWord, source){
     return function(dispatch){
         fetch(FETCHING.searchURI(keyWord), FETCHING.fetchOptions)   
             .then(res => res.text())
-            .then(res => dispatch(
-                setNewData(
-                    loadBooksList(
-                        convert.xml2js(
-                            res, FETCHING.converterOptions
-                        )
-                    ),
-                    source
-                )
-            )
-        ).then(dispatch(loadBooks(source)))
+            .then(res => { 
+                dispatch(
+                    setNewData(
+                        loadBooksList(
+                            convert.xml2js(
+                                res, FETCHING.converterOptions
+                            )
+                        ),
+                        source
+                    )
+                );
+                dispatch(loadBooks(source));
+                
+            }
+        )                     
     }
 };
+
+export const sortBy = (keyWord, source) => ({
+    type: CONSTANTS.SORT_BY,
+    keyWord,
+    source
+})
+
+export const filter = (keyWord) => ({
+    type: CONSTANTS.FILTER
+})
 

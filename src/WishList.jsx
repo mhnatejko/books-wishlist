@@ -3,16 +3,13 @@ import { connect } from 'react-redux';
 import SearchSort from './SearchSort';
 import BookCards from './BookCards';
 import SpinnerComponent from './SpinnerComponent';
-import { loadBooks, requestApi } from './redux/actions';
 
 const source = 'wishListData'
-const WishList = ({ testAsk, books, fetching, loadBooks }) => {
+const WishList = ({ books, fetching }) => {
 	return (
 		<div>
 			<h1>Your wishlist of books</h1>
 			<SearchSort source={source}/>
-			<button onClick={loadBooks}>load</button> 
-			<button onClick={testAsk}>ask for harry potter</button>
 			{
 				fetching 
 					? 
@@ -29,9 +26,12 @@ const mapStateToProps = state => ({
 	books: state[source].books,
 });
 
-const mapDispatchToProps = dispatch => ({
-	loadBooks: () => dispatch(loadBooks(source)),
-	testAsk: () => dispatch(requestApi('harry+potter', source))
-});
+// const mapDispatchToProps = dispatch => ({
+// 	loadBooks: () => dispatch(loadBooks(source)),
+// 	testAsk: () => dispatch(requestApi('harry+potter', source))
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(WishList);
+export default connect(mapStateToProps)(WishList);
+
+//			<button onClick={loadBooks}>load</button> 
+//			<button onClick={testAsk}>ask for harry potter</button>

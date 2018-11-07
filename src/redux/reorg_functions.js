@@ -17,3 +17,13 @@ export function loadBooksList(jsApiRespObj){
     };
     return reorgData;
 }
+
+function loadBooksDetails(jsApiRespObj_details, reorgData){
+    var smallJsApiRespObj_details = Object.assign({}, jsApiRespObj_details["GoodreadsResponse"]["book"]);
+    for(var book of reorgData){
+        if(book['best_book_id'] === smallJsApiRespObj_details['id']["_text"]){
+            book['details'] = smallJsApiRespObj_details
+        }	
+    };
+}
+

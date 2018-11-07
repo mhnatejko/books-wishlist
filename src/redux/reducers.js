@@ -45,10 +45,35 @@ function reducer(state = defaultState, action){
 		};
 		break;
 	case CONSTANTS.CHANGE_VALUE:
-		return {...state, searchValue: action.value};
+		return {
+			...state, 
+			searchValue: action.value
+		};
 		break;
 	case CONSTANTS.SET_NEW_DATA:
-		return {...state, [action.source]: {...state[action.source], books:action.data}};
+		return {
+			...state, 
+			[action.source]: {
+				...state[action.source], 
+				books:action.data
+			}
+		};
+		break;
+	case CONSTANTS.SORT_BY:
+		return {
+			...state, 
+			[action.source]: {
+				...state[action.source], 
+				books: state[action.source].books.sort(
+					(a, b) => {
+						return a[action.keyWord] - b[action.keyWord];
+					} 
+				)
+			}
+		};
+		break;
+	case CONSTANTS.FILTER:
+		return {...state};
 		break;
 	default:
 		return {...state};
