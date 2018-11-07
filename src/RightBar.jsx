@@ -1,8 +1,8 @@
 import React from 'react';
-import Spinner from 'react-spinkit';
 import { connect } from 'react-redux';
 import { loadBooks } from './redux/actions';
 import BookCards from './BookCards';
+import SpinnerComponent from './SpinnerComponent';
 
 const RightBar = ({ books, fetching, loadBooks}) => {
 	return (
@@ -12,7 +12,7 @@ const RightBar = ({ books, fetching, loadBooks}) => {
 			{
 				fetching 
 					? 
-					<Spinner name="circle" color="black" fadeIn="none"/>
+					<SpinnerComponent />
 					:
 					<BookCards books={books}/>
 			}      

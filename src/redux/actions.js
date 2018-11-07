@@ -3,30 +3,37 @@ import convert from 'xml-js';
 import * as FETCHING from './request_functions';
 import { loadBooksList } from './reorg_functions';
 
-export const loadBooks = (localization) => ({
+export const loadBooks = (source) => ({
     type: CONSTANTS.LOAD_BOOKS,
-    localization
+    source
 });
 
-export const setNewData = (data) => ({
+export const setNewData = (data, source) => ({
     type: CONSTANTS.SET_NEW_DATA,
-    data
+    data,
+    source
 });
 
-export function requestApi(keyWord){
+export const changeValue = (value) => ({
+    type: CONSTANTS.CHANGE_VALUE,
+    value
+})
+
+export function requestApi(keyWord, source){
     return function(dispatch){
-        fetch(FETCHING.searchURI(keyWord),FETCHING.fetchOptions)   
-		.then(res => res.text())
-        .then(res => dispatch(
-            setNewData(
-                loadBooksList(
-                    convert.xml2js(
-                        res, FETCHING.converterOptions
-                    )
+        fetch(FETCHING.searchURI(keyWord), FETCHING.fetchOptions)   
+            .then(res => res.text())
+            .then(res => dispatch(
+                setNewData(
+                    loadBooksList(
+                        convert.xml2js(
+                            res, FETCHING.converterOptions
+                        )
+                    ),
+                    source
                 )
             )
-        )
-    ).then(dispatch(loadBooks('wishListData')))
+        ).then(dispatch(loadBooks(source)))
     }
 };
 

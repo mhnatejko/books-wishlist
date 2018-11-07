@@ -4,6 +4,11 @@ import base_books from '../exampleResponseData/respExample';
 
 
 const defaultState = {
+	searchValue: undefined,
+	browserData: {
+		fetching: true,
+		books: []
+	},
 	leftBarData: {    
 		fetching: true,
 		books: base_books
@@ -33,14 +38,18 @@ function reducer(state = defaultState, action){
 		//let fetchingValue = state[action.localization]['fetching']; //cause an error: Maximum update depth exceeded.           
 		return {
 			...state, 
-			[action.localization]: {
-				...state[action.localization], 
-				fetching: !state[action.localization]['fetching']
+			[action.source]: {
+				...state[action.source], 
+				fetching: !state[action.source]['fetching']
 			}
 		};
 		break;
+	case CONSTANTS.CHANGE_VALUE:
+		return {...state, searchValue: action.value};
+		break;
 	case CONSTANTS.SET_NEW_DATA:
-		return {...state, wishListData: {...state.wishListData, books:action.data}}
+		return {...state, [action.source]: {...state[action.source], books:action.data}};
+		break;
 	default:
 		return {...state};
 		break;
