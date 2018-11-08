@@ -5,6 +5,8 @@ import base_books from '../exampleResponseData/respExample';
 
 const defaultState = {
 	searchValue: undefined,
+	filterValue: undefined,
+	temporaryBooksTable: undefined,
 	browserData: {
 		fetching: true,
 		books: []
@@ -44,36 +46,55 @@ function reducer(state = defaultState, action){
 			}
 		};
 		break;
-	case CONSTANTS.CHANGE_VALUE:
+	case CONSTANTS.CHANGE_SEARCH_VALUE:
 		return {
 			...state, 
 			searchValue: action.value
 		};
 		break;
-	case CONSTANTS.SET_NEW_DATA:
+	case CONSTANTS.CHANGE_FILTER_VALUE:
 		return {
 			...state, 
-			[action.source]: {
-				...state[action.source], 
-				books:action.data
-			}
+			filterValue: action.value
 		};
 		break;
+	case CONSTANTS.SET_NEW_DATA:
+		if(action.data){
+			return {
+				...state, 
+				[action.source]: {
+					...state[action.source], 
+					books:action.data
+				},
+				temporaryBooksTable: action.data
+			};
+		}
+		break;
 	case CONSTANTS.SORT_BY:
+		if(state[action.source].books){
+			return {
+				...state, 
+				[action.source]: {
+					...state[action.source], 
+					books: [...state[action.source].books].sort(
+						(a, b) => {
+							return a[action.keyWord] - b[action.keyWord];
+						} 
+					)
+				}
+			};
+		}
+		break;
+	case CONSTANTS.FILTER:
 		return {
-			...state, 
+			...state,
 			[action.source]: {
-				...state[action.source], 
-				books: state[action.source].books.sort(
-					(a, b) => {
-						return a[action.keyWord] - b[action.keyWord];
-					} 
+				...state[action.source],
+				books: [...state.temporaryBooksTable].filter(
+					book => book['best_book_title'].includes(action.keyWord)
 				)
 			}
 		};
-		break;
-	case CONSTANTS.FILTER:
-		return {...state};
 		break;
 	default:
 		return {...state};

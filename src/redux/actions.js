@@ -14,10 +14,17 @@ export const setNewData = (data, source) => ({
     source
 });
 
-export const changeValue = (value) => ({
-    type: CONSTANTS.CHANGE_VALUE,
+export const changeSearchVal = (value) => ({
+    type: CONSTANTS.CHANGE_SEARCH_VALUE,
     value
-})
+});
+
+export const changeFilterVal = (value, source) => ({
+    type: CONSTANTS.CHANGE_FILTER_VALUE,
+    value,
+    source
+});
+
 
 export function requestApi(keyWord, source){
     return function(dispatch){
@@ -47,7 +54,9 @@ export const sortBy = (keyWord, source) => ({
     source
 })
 
-export const filter = (keyWord) => ({
-    type: CONSTANTS.FILTER
+export const filter = (keyWord, source) => ({
+    type: CONSTANTS.FILTER,
+    keyWord,
+    source
 })
 

@@ -1,4 +1,5 @@
 export function loadBooksList(jsApiRespObj){
+    //if(jsApiRespObj.constructor === Array){}
     var smallJsApiRespObj = [...jsApiRespObj["GoodreadsResponse"]["search"]["results"]["work"]];
     var reorgData = [];
     for (var el of smallJsApiRespObj) {
