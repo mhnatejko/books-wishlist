@@ -1,7 +1,7 @@
 import * as CONSTANTS from './constants';
 import convert from 'xml-js';
 import * as FETCHING from './request_functions';
-import { loadBooksList } from './reorg_functions';
+import { loadBooksList, loadBooksDetails } from './reorg_functions';
 
 export const loadBooks = (source) => ({
     type: CONSTANTS.LOAD_BOOKS,
@@ -13,6 +13,13 @@ export const setNewData = (data, source) => ({
     data,
     source
 });
+
+export const setDetailsData = (data, bookID, source) => ({
+    type: CONSTANTS.SET_DETAILS_DATA,
+    data,
+    bookID,
+    source,
+})
 
 export const changeSearchVal = (value) => ({
     type: CONSTANTS.CHANGE_SEARCH_VALUE,
@@ -27,6 +34,7 @@ export const changeFilterVal = (value, source) => ({
 
 
 export function requestApi(keyWord, source){
+    keyWord = keyWord.replace(" ", "+") 
     return function(dispatch){
         fetch(FETCHING.searchURI(keyWord), FETCHING.fetchOptions)   
             .then(res => res.text())
@@ -47,6 +55,28 @@ export function requestApi(keyWord, source){
         )                     
     }
 };
+
+export function requestDetailsApi(bookID, source){
+    return function(dispatch){
+        fetch(FETCHING.bookDetails(bookID), FETCHING.fetchOptions)
+            .then(res => res.text())
+            .then(res => {
+                dispatch(
+                    setDetailsData(
+                        loadBooksDetails(
+                            convert.xml2js(
+                                res, FETCHING.converterOptions
+                            )
+                        ),
+                        bookID,
+                        source
+                    )
+                );
+                dispatch(loadBooks(source));
+            }            
+        )
+    }
+}
 
 export const sortBy = (keyWord, source) => ({
     type: CONSTANTS.SORT_BY,

@@ -1,8 +1,8 @@
 export function loadBooksList(jsApiRespObj){
     //if(jsApiRespObj.constructor === Array){}
-    var smallJsApiRespObj = [...jsApiRespObj["GoodreadsResponse"]["search"]["results"]["work"]];
-    var reorgData = [];
-    for (var el of smallJsApiRespObj) {
+    const smallJsApiRespObj = [...jsApiRespObj["GoodreadsResponse"]["search"]["results"]["work"]];
+    const reorgData = [];
+    for (let el of smallJsApiRespObj) {
         reorgData.push({
             id: el['id']['_text'],
             ratings_count: el['ratings_count']['_text'],
@@ -19,12 +19,26 @@ export function loadBooksList(jsApiRespObj){
     return reorgData;
 }
 
-function loadBooksDetails(jsApiRespObj_details, reorgData){
-    var smallJsApiRespObj_details = Object.assign({}, jsApiRespObj_details["GoodreadsResponse"]["book"]);
-    for(var book of reorgData){
-        if(book['best_book_id'] === smallJsApiRespObj_details['id']["_text"]){
-            book['details'] = smallJsApiRespObj_details
-        }	
-    };
+export function loadBooksDetails(jsApiRespObj_details){
+    console.log(jsApiRespObj_details)
+    const smallJsApiRespObj_details = {...jsApiRespObj_details["GoodreadsResponse"]["book"]};
+    const reorgData = {
+        country: smallJsApiRespObj_details["country_code"]["_cdata"],
+        publication_month: smallJsApiRespObj_details["publication_month"]["_text"],
+        publication_day: smallJsApiRespObj_details["publication_day"]["_text"],
+        publisher: smallJsApiRespObj_details["publisher"]["_text"],
+        language_code: smallJsApiRespObj_details["language_code"]["_text"],
+        description: smallJsApiRespObj_details["description"]["_cdata"],
+        ratings_count: smallJsApiRespObj_details["work"]["ratings_count"]["_text"],
+        original_title: smallJsApiRespObj_details["work"]["original_title"]["_text"],
+        tags: smallJsApiRespObj_details["popular_shelves"]["shelf"] 
+        ? 
+        [...smallJsApiRespObj_details["popular_shelves"]["shelf"]] 
+        :
+        [], // ["_attributes"]["name"]
+        book_link: smallJsApiRespObj_details["book_links"]["book_link"]["link"]["_text"]
+    }    
+    return reorgData;   	
+    
 }
 

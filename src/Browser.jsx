@@ -15,7 +15,7 @@ const Browser = ({ books, fetching }) => {
 					? 
 					<SpinnerComponent />
 					:
-					<BookCards books={books}/>
+					<BookCards source={source} books={books}/>
 			}      		
         </div>
     )

@@ -7,7 +7,7 @@ const SearchSort = ({ sortBy, search, source, searchValue, filterValue, changeSe
         <div>
             <h3>Search & Sort</h3>
             <div>                
-                <input id="search"  value={searchValue} onChange={e => changeSearchVal(e)}></input>                         
+                <input id="search" value={searchValue} onChange={e => changeSearchVal(e)}></input>                         
                 <button id="search_btn" onClick={() => search(searchValue, source)}>search</button>
             </div>
             <input id="filter" value={filterValue} onChange={

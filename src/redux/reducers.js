@@ -68,7 +68,22 @@ function reducer(state = defaultState, action){
 				},
 				temporaryBooksTable: action.data
 			};
-		}
+		};
+		break;
+	case CONSTANTS.SET_DETAILS_DATA:
+		if(action.data){
+			return {
+				...state,
+				[action.source]: {
+					...state[action.source],
+					books: [
+						...state[action.source].books,
+						{...(state[action.source].books.filter(book => book.best_book_id === action.bookID))[0], ...action.data}
+						
+					]
+				}
+			}
+		};
 		break;
 	case CONSTANTS.SORT_BY:
 		if(state[action.source].books){
@@ -83,7 +98,7 @@ function reducer(state = defaultState, action){
 					)
 				}
 			};
-		}
+		};
 		break;
 	case CONSTANTS.FILTER:
 		return {
