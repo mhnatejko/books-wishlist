@@ -5,13 +5,13 @@ import BookCards from './BookCards';
 import SpinnerComponent from './SpinnerComponent';
 
 const source = 'browserData'
-const Browser = ({ books, fetching }) => {
+const Browser = ({ books, loading }) => {
     return (
         <div>
             <h1>Search books or authors</h1>
             <SearchSort source={source}/>
             {
-				fetching 
+				loading 
 					? 
 					<SpinnerComponent />
 					:
@@ -22,7 +22,7 @@ const Browser = ({ books, fetching }) => {
 }
 
 const mapStateToProps = state => ({
-	fetching: state[source].fetching,
+	loading: state[source].loading,
 	books: state[source].books
 });
 

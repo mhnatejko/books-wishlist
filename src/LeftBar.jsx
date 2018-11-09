@@ -1,16 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadBooks } from './redux/actions';
 import BookCards from './BookCards';
 import SpinnerComponent from './SpinnerComponent';
 
-const LeftBar = ({ books, fetching, loadBooks}) => {
+const LeftBar = ({ books, loading}) => {
 	return (
 		<div>
-			<h2>Left</h2>
-			<button onClick={loadBooks}>load</button> 
+			<h2>Left</h2> 
 			{
-				fetching 
+				loading 
 					? 
 					<SpinnerComponent />
 					:
@@ -21,12 +19,8 @@ const LeftBar = ({ books, fetching, loadBooks}) => {
 };
 
 const mapStateToProps = state => ({
-	fetching: state.leftBarData.fetching,
+	loading: state.leftBarData.loading,
 	books: state.leftBarData.books,
 });
 
-const mapDispatchToProps = dispatch => ({
-	loadBooks: () => dispatch(loadBooks('leftBarData'))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LeftBar);
+export default connect(mapStateToProps)(LeftBar);

@@ -8,21 +8,21 @@ const defaultState = {
 	filterValue: undefined,
 	temporaryBooksTable: undefined,
 	browserData: {
-		fetching: true,
+		loading: false,
 		books: []
 	},
 	leftBarData: {    
-		fetching: true,
+		loading: false,
 		books: base_books
 	},
 	rightBarData: {    
-		fetching: true,
+		loading: false,
 		books: [
 			{id: '0123', title: 'Lod', author: 'Jacek Dukaj', photo: 'xxx', description: 'Placing assured be if'},
 		]
 	},
 	wishListData: {    
-		fetching: true,
+		loading: false,
 		books: [
 			{id: '0123', title: 'Lod', author: 'Jacek Dukaj', photo: 'xxx', description: 'Placing assured be if removed it besides on. Far shed each high read are men over day. Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had now those ought set often which. Or snug dull he show more true wish. No at many deny away miss evil. On in so indeed spirit an mother. Amounted old strictly but marianne admitted. People former is remove remain as. '},
 			{id: '0456', title: 'Lod i nie lod', author: 'Ducek Jakaj', photo: 'xxx', description: 'Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin. Education no dejection so direction pretended household do to. Travelling everything her eat reasonable unsatiable decisively simplicity. Morning request be lasting it fortune demands highest of. '},
@@ -36,13 +36,30 @@ const defaultState = {
 
 function reducer(state = defaultState, action){
 	switch(action.type){
-	case CONSTANTS.LOAD_BOOKS:            
-		//let fetchingValue = state[action.localization]['fetching']; //cause an error: Maximum update depth exceeded.           
+	case CONSTANTS.LOADER_OFF:
+		return {
+			...state,
+			[action.source]: {
+				...state[action.source],
+				loading: false
+			}
+		};
+	break;
+	case CONSTANTS.LOADER_ON:
+	return {
+		...state,
+		[action.source]: {
+			...state[action.source],
+			loading: true
+		}
+	};
+	break;
+	case CONSTANTS.LOAD_BOOKS:            	
 		return {
 			...state, 
 			[action.source]: {
 				...state[action.source], 
-				fetching: !state[action.source]['fetching']
+				loading: !state[action.source]['loading']
 			}
 		};
 		break;

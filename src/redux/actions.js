@@ -32,10 +32,21 @@ export const changeFilterVal = (value, source) => ({
     source
 });
 
+export const loaderOff = (source) => ({
+    type: CONSTANTS.LOADER_OFF,
+    source
+})
+
+export const loaderOn = (source) => ({
+    type: CONSTANTS.LOADER_ON,
+    source
+})
+
 
 export function requestApi(keyWord, source){
     keyWord = keyWord.replace(" ", "+") 
     return function(dispatch){
+        dispatch(loaderOn(source));
         fetch(FETCHING.searchURI(keyWord), FETCHING.fetchOptions)   
             .then(res => res.text())
             .then(res => { 
@@ -50,7 +61,7 @@ export function requestApi(keyWord, source){
                     )
                 );
                 dispatch(loadBooks(source));
-                
+                dispatch(loaderOff(source))
             }
         )                     
     }
@@ -58,6 +69,7 @@ export function requestApi(keyWord, source){
 
 export function requestDetailsApi(bookID, source){
     return function(dispatch){
+        dispatch(loaderOn(source));
         fetch(FETCHING.bookDetails(bookID), FETCHING.fetchOptions)
             .then(res => res.text())
             .then(res => {
@@ -73,6 +85,7 @@ export function requestDetailsApi(bookID, source){
                     )
                 );
                 dispatch(loadBooks(source));
+                dispatch(loaderOff(source));
             }            
         )
     }

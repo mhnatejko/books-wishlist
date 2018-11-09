@@ -5,6 +5,7 @@ export function loadBooksList(jsApiRespObj){
     for (let el of smallJsApiRespObj) {
         reorgData.push({
             details: false,
+            detailsLoading: false,
             id: el['id']['_text'],
             ratings_count: el['ratings_count']['_text'],
             original_publication_year: el['original_publication_year']['_text'],
@@ -37,7 +38,7 @@ export function loadBooksDetails(jsApiRespObj_details){
         [...smallJsApiRespObj_details["popular_shelves"]["shelf"]] 
         :
         [], // ["_attributes"]["name"]
-        book_link: smallJsApiRespObj_details["book_links"]["book_link"]["link"]["_text"]
+        book_link: smallJsApiRespObj_details["url"]["_cdata"]
     }    
     return reorgData;   	
     
