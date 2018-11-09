@@ -4,6 +4,7 @@ export function loadBooksList(jsApiRespObj){
     const reorgData = [];
     for (let el of smallJsApiRespObj) {
         reorgData.push({
+            details: false,
             id: el['id']['_text'],
             ratings_count: el['ratings_count']['_text'],
             original_publication_year: el['original_publication_year']['_text'],

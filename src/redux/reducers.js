@@ -71,15 +71,32 @@ function reducer(state = defaultState, action){
 		};
 		break;
 	case CONSTANTS.SET_DETAILS_DATA:
+		let allBooks = state[action.source].books;
+		let detailedBook = (state[action.source].books.filter(
+			book => book.best_book_id === action.bookID)
+		)[0];
+		let detailedBookIndex = allBooks.indexOf(detailedBook);
 		if(action.data){
 			return {
 				...state,
 				[action.source]: {
 					...state[action.source],
+					// books: [
+					// 	...state[action.source].books,
+					// 	{...(state[action.source].books.filter(
+					// 		book => book.best_book_id === action.bookID))[0], 
+					// 		...action.data,
+					// 		details: true
+					// 	}						
+					// ]
 					books: [
-						...state[action.source].books,
-						{...(state[action.source].books.filter(book => book.best_book_id === action.bookID))[0], ...action.data}
-						
+						...allBooks.slice(0, detailedBookIndex),
+						{
+							...detailedBook,
+							...action.data,
+							details: true
+						},
+						...allBooks.slice(detailedBookIndex+1)
 					]
 				}
 			}
