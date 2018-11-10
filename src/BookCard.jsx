@@ -11,14 +11,21 @@ const BookCard = ({data, source, requestDetailsApi}) => {
             <p>title:{data.best_book_title}</p>
             {data.best_book_title !== data.details && <p>{data.original_title}</p>}
             <p>author:{data.best_book_author_name}</p>
-            <p>publication date: {data.original_publication_year}</p>
-            {data.details && <p>.{data.publication_month}.{data.publication_day}</p>}            
-            <p>average rating:{data.average_rating} / 5</p>
-            {data.details && <p>of {data.ratings_count} votes</p>}
+            {data.details && <p>publisher: {data.publisher}</p>}
+            {data.details ? 
+                <p>publication date: {data.publication_month}.{data.publication_day}.{data.original_publication_year}</p> 
+                : 
+                <p>publication date: {data.original_publication_year}</p>
+            }
+            {data.details ?
+                <p>average rating:{data.average_rating} / 5 of {data.ratings_count} votes</p>
+                :
+                <p>average rating:{data.average_rating} / 5</p>
+            }
             {!data.details && <button onClick={() => requestDetailsApi(data.best_book_id, source)}>more</button>}
             {data.detailsLoading && <SpinnerComponent />}
             {data.details && 
-                <div>
+                <div>                    
                     <p>country: {data.country}</p> 
                     <p>language: {data.language_code}</p>
                     <p>descrpition: {data.description}</p>
