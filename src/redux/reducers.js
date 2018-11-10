@@ -148,7 +148,7 @@ function reducer(state = defaultState, action){
 			[action.source]: {
 				...state[action.source],
 				books: [...state.temporaryBooksTable].filter(
-					book => book[action.source].includes(action.keyWord)
+					book => book[action.keyWord].toLowerCase().includes(state.filterValue.toLowerCase())
 				)
 			}
 		};

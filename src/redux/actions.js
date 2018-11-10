@@ -97,7 +97,7 @@ export const sortBy = (keyWord, source) => ({
     source
 });
 
-export const filter = (keyWord = 'best_book_title', source) => ({
+export const filter = (keyWord, source) => ({
     type: CONSTANTS.FILTER,
     keyWord,
     source
