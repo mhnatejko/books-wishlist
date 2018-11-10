@@ -1,8 +1,5 @@
 import * as CONSTANTS from './constants';
 
-import base_books from '../exampleResponseData/respExample';
-
-
 const defaultState = {
 	searchValue: undefined,
 	filterValue: undefined,
@@ -13,7 +10,7 @@ const defaultState = {
 	},
 	leftBarData: {    
 		loading: false,
-		books: base_books
+		books: []
 	},
 	rightBarData: {    
 		loading: false,
@@ -44,16 +41,16 @@ function reducer(state = defaultState, action){
 				loading: false
 			}
 		};
-	break;
+		break;
 	case CONSTANTS.LOADER_ON:
-	return {
-		...state,
-		[action.source]: {
-			...state[action.source],
-			loading: true
-		}
-	};
-	break;
+		return {
+			...state,
+			[action.source]: {
+				...state[action.source],
+				loading: true
+			}
+		};
+		break;
 	case CONSTANTS.LOAD_BOOKS:            	
 		return {
 			...state, 
@@ -125,11 +122,22 @@ function reducer(state = defaultState, action){
 				...state, 
 				[action.source]: {
 					...state[action.source], 
-					books: [...state[action.source].books].sort(
-						(a, b) => {
-							return a[action.keyWord] - b[action.keyWord];
-						} 
-					)
+					books: 
+						action.keyWord === 'best_book_title' || action.keyWord === 'best_book_author_name' 
+							?  
+							[...state[action.source].books].sort(
+								(a, b) => {
+									if(a[action.keyWord] < b[action.keyWord]) return -1;
+									if(a[action.keyWord] > b[action.keyWord]) return +1;
+									if(a[action.keyWord] == b[action.keyWord]) return 0;
+								}
+							)					
+							: 
+							[...state[action.source].books].sort(
+								(a, b) => {
+									return a[action.keyWord] - b[action.keyWord];
+								} 
+							)
 				}
 			};
 		};
@@ -140,7 +148,7 @@ function reducer(state = defaultState, action){
 			[action.source]: {
 				...state[action.source],
 				books: [...state.temporaryBooksTable].filter(
-					book => book['best_book_title'].includes(action.keyWord)
+					book => book[action.source].includes(action.keyWord)
 				)
 			}
 		};

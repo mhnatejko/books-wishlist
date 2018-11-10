@@ -19,7 +19,7 @@ export const setDetailsData = (data, bookID, source) => ({
     data,
     bookID,
     source,
-})
+});
 
 export const changeSearchVal = (value) => ({
     type: CONSTANTS.CHANGE_SEARCH_VALUE,
@@ -35,12 +35,12 @@ export const changeFilterVal = (value, source) => ({
 export const loaderOff = (source) => ({
     type: CONSTANTS.LOADER_OFF,
     source
-})
+});
 
 export const loaderOn = (source) => ({
     type: CONSTANTS.LOADER_ON,
     source
-})
+});
 
 
 export function requestApi(keyWord, source){
@@ -89,17 +89,17 @@ export function requestDetailsApi(bookID, source){
             }            
         )
     }
-}
+};
 
 export const sortBy = (keyWord, source) => ({
     type: CONSTANTS.SORT_BY,
     keyWord,
     source
-})
+});
 
-export const filter = (keyWord, source) => ({
+export const filter = (keyWord = 'best_book_title', source) => ({
     type: CONSTANTS.FILTER,
     keyWord,
     source
-})
+});
 
