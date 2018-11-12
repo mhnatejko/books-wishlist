@@ -119,7 +119,7 @@ function reducer(state = defaultState, action){
 								(a, b) => {
 									if(a[action.keyWord] < b[action.keyWord]) return -1;
 									if(a[action.keyWord] > b[action.keyWord]) return +1;
-									if(a[action.keyWord] == b[action.keyWord]) return 0;
+									if(a[action.keyWord] === b[action.keyWord]) return 0;
 								}
 							)					
 							: 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
 import { requestDetailsApi, addToWishList, removeFromWishList } from './redux/actions';
-import SpinnerComponent from './SpinnerComponent'
+import SpinnerComponent from './SpinnerComponent';
 
-const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWishList}) => {
+const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWishList, wishListDataBooks}) => {
     return (
         <div key={data.best_book_id}>
             {
@@ -13,7 +13,7 @@ const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWis
             }
             
             {
-                source !== 'wishListData' 
+                source !== 'wishListData' &&  !wishListDataBooks.some(book => book.best_book_id === data.best_book_id)
                 ? <button onClick={() => addToWishList(data)}>+</button> 
                 : <button onClick={() => removeFromWishList(data.best_book_id, source)}>-</button>
             }
@@ -51,10 +51,14 @@ const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWis
     )
 }
 
+const mapStateToProps = state => ({
+    wishListDataBooks: state.wishListData.books
+})
+
 const mapDispatchToProps = dispatch => ({
     requestDetailsApi: (bookID, source) => dispatch(requestDetailsApi(bookID, source)),
     addToWishList: (data) => dispatch(addToWishList(data)),
     removeFromWishList: (bookID, source) => dispatch(removeFromWishList(bookID, source))
 });
 
-export default connect(null, mapDispatchToProps)(BookCard);
+export default connect(mapStateToProps, mapDispatchToProps)(BookCard);

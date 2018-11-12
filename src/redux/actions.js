@@ -44,7 +44,7 @@ export const loaderOn = (source) => ({
 
 
 export function requestApi(keyWord, source){
-    keyWord = keyWord.replace(" ", "+") 
+    if(keyWord) keyWord = keyWord.split(" ").join("+");
     return function(dispatch){
         dispatch(loaderOn(source));
         fetch(FETCHING.searchURI(keyWord), FETCHING.fetchOptions)   
@@ -62,9 +62,9 @@ export function requestApi(keyWord, source){
                 );
                 dispatch(loadBooks(source));
                 dispatch(loaderOff(source))
-            }
-        )                     
-    }
+            })     
+            .catch(err => console.log(err))                
+    }   
 };
 
 export function requestDetailsApi(bookID, source){
@@ -86,8 +86,8 @@ export function requestDetailsApi(bookID, source){
                 );
                 dispatch(loadBooks(source));
                 dispatch(loaderOff(source));
-            }            
-        )
+            })
+            .catch(err => console.log(err));
     }
 };
 

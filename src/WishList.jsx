@@ -12,7 +12,6 @@ const WishList = ({ books, fetching, downloadWishList }) => {
 			<h1>Your wishlist of books</h1>
 			<p>save list to file</p>
 			<button download="wishList.txt" onClick={downloadWishList}>save &#8681;</button>
-			<a href=""></a>
 			<SearchSort source={source}/>
 			{
 				fetching 
