@@ -103,3 +103,19 @@ export const filter = (keyWord, source) => ({
     source
 });
 
+export const addToWishList = (data) => ({
+    type: CONSTANTS.ADD_TO_WISHLIST,
+    data,
+    source: 'wishListData'
+})
+
+export const removeFromWishList = (bookID, source) => ({
+    type: CONSTANTS.REMOVE_FROM_WISHLIST,
+    bookID,
+    source
+})
+
+export const downloadWishList = () => ({
+    type: CONSTANTS.DOWNLOAD_WISH_LIST
+})
+

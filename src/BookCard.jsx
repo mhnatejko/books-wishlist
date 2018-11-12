@@ -1,13 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
-import { requestDetailsApi } from './redux/actions';
+import { requestDetailsApi, addToWishList, removeFromWishList } from './redux/actions';
 import SpinnerComponent from './SpinnerComponent'
 
-const BookCard = ({data, source, requestDetailsApi}) => {
+const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWishList}) => {
     return (
         <div key={data.best_book_id}>
-            {data.best_book_image_url && !data.best_book_image_url.includes("nophoto") && <img src={data.best_book_image_url} alt={data.best_book_title} />}
-            <button>+</button>
+            {
+                data.best_book_image_url 
+                && !data.best_book_image_url.includes("nophoto") 
+                && <img src={data.best_book_image_url} alt={data.best_book_title} />
+            }
+            
+            {
+                source !== 'wishListData' 
+                ? <button onClick={() => addToWishList(data)}>+</button> 
+                : <button onClick={() => removeFromWishList(data.best_book_id, source)}>-</button>
+            }
+            
             <p>title:{data.best_book_title}</p>
             {data.best_book_title !== data.details && <p>{data.original_title}</p>}
             <p>author:{data.best_book_author_name}</p>
@@ -42,7 +52,9 @@ const BookCard = ({data, source, requestDetailsApi}) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    requestDetailsApi: (bookID, source) => dispatch(requestDetailsApi(bookID, source))
+    requestDetailsApi: (bookID, source) => dispatch(requestDetailsApi(bookID, source)),
+    addToWishList: (data) => dispatch(addToWishList(data)),
+    removeFromWishList: (bookID, source) => dispatch(removeFromWishList(bookID, source))
 });
 
 export default connect(null, mapDispatchToProps)(BookCard);

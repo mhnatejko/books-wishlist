@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import BookCards from './BookCards';
 import SpinnerComponent from './SpinnerComponent';
 import { requestApi } from './redux/actions';
-
+import { todayDay } from './redux/day_of_the_week_function';
 
 const source = 'leftBarData';
-const searchValue = 'poniedzialek';
+const searchValue = todayDay();
 class LeftBar extends Component {
 
 	componentDidMount(){
@@ -16,6 +16,7 @@ class LeftBar extends Component {
 		return (
 			<div>
 				<h2>Left</h2> 
+				<h3>Suggestions for today</h3>
 				{
 					this.props.loading 
 						? 
@@ -33,36 +34,10 @@ const mapStateToProps = state => ({
 	books: state[source].books,
 });
 
-
 const mapDispatchToProps = dispatch => ({
 	search: (searchValue, source) => dispatch(requestApi(searchValue, source))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeftBar);
 
-/*
-const LeftBar = ({ books, loading}) => {
-	
-	return (
-		<div>
-			<h2>Left</h2> 
-			{
-				loading 
-					? 
-					<SpinnerComponent />
-					:
-					<BookCards books={books}/>
-			}      
-		</div>
-	);
-};
-
-const mapStateToProps = state => ({
-	loading: state.leftBarData.loading,
-	books: state.leftBarData.books,
-});
-
-export default connect(mapStateToProps)(LeftBar);
-
-*/
 

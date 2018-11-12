@@ -7,5 +7,10 @@ export const CHANGE_FILTER_VALUE = 'CHANGE_FILTER_VALUE';
 export const SORT_BY = 'SORT_BY';
 export const FILTER = 'FILTER';
 
-export const LOADER_OFF = "LOADER_OFF";
-export const LOADER_ON = "LOADER_ON";
+export const LOADER_OFF = 'LOADER_OFF';
+export const LOADER_ON = 'LOADER_ON';
+
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'; 
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
+
+export const DOWNLOAD_WISH_LIST = 'DOWNLOAD_WISH_LIST';
