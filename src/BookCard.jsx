@@ -15,7 +15,7 @@ const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWis
             {
                 source !== 'wishListData' &&  !wishListDataBooks.some(book => book.best_book_id === data.best_book_id)
                 ? <button onClick={() => addToWishList(data)}>+</button> 
-                : <button onClick={() => removeFromWishList(data.best_book_id, source)}>-</button>
+                : <button onClick={() => removeFromWishList(data.best_book_id, "wishListData")}>-</button>
             }
             
             <p>title:{data.best_book_title}</p>
