@@ -1,9 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { filter, changeFilterVal, changeSearchVal, requestApi, sortBy } from './redux/actions';
+import PropTypes from 'prop-types';
+import { 
+	changeFilterVal, 
+	changeSearchVal, 
+	filter, 	
+	requestApi, 
+	sortBy 
+} from './redux/actions';
 
-const SearchSort = ({ sortBy, search, source, searchValue, filterValue, changeSearchVal, changeFilterVal, filter }) => {
-	var testRef = React.createRef()
+const SearchSort = ({ 
+	source,
+	filterValue, 
+	searchValue, 
+	changeFilterVal, 
+	changeSearchVal,
+	filter,
+	search,
+	sortBy	
+}) => {
+	
+	var testRef = React.createRef();
+	
 	return (
 		<div>
 			<h3>{source === 'browserData' && 'Search &'} Sort</h3>
@@ -46,21 +64,31 @@ const SearchSort = ({ sortBy, search, source, searchValue, filterValue, changeSe
 				<label htmlFor='filter_author'><input ref={testRef} type='radio' value='best_book_author_name' name='filter' id='filter_author'/>author</label>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
 const mapStateToProps = state => ({
-	searchValue: state.searchValue,
-	filterValue: state.filterValue
-})
+	filterValue: state.filterValue,
+	searchValue: state.searchValue	
+});
 
 const mapDispatchToProps = dispatch => ({
-	changeSearchVal: e => dispatch(changeSearchVal(e.target.value)),
 	changeFilterVal: e => dispatch(changeFilterVal(e.target.value)),
-	sortBy: (keyWord, source) => dispatch(sortBy(keyWord, source)),    
+	changeSearchVal: e => dispatch(changeSearchVal(e.target.value)),	
+	filter: (filterValue, source) => dispatch(filter(filterValue, source)),
 	search: (searchValue, source) => dispatch(requestApi(searchValue, source)),
-	filter: (filterValue, source) => dispatch(filter(filterValue, source))
+	sortBy: (keyWord, source) => dispatch(sortBy(keyWord, source))
+});
 
-})
+SearchSort.propTypes = {
+	source: PropTypes.string,
+	filterValue: PropTypes.string, 
+	searchValue: PropTypes.string, 
+	changeFilterVal: PropTypes.func, 
+	changeSearchVal: PropTypes.func,
+	filter: PropTypes.func,
+	search: PropTypes.func,
+	sortBy: PropTypes.func	
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchSort);

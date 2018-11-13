@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
+import PropTypes from 'prop-types';
+import { downloadWishList } from './redux/actions';
 import SearchSort from './SearchSort';
 import BookCards from './BookCards';
 import SpinnerComponent from './SpinnerComponent';
-import { downloadWishList } from './redux/actions';
 
-const source = 'wishListData'
+const source = 'wishListData';
 const WishList = ({ books, fetching, downloadWishList }) => {
 	return (
 		<div>
@@ -25,20 +26,18 @@ const WishList = ({ books, fetching, downloadWishList }) => {
 };
 
 const mapStateToProps = state => ({
-	fetching: state[source].fetching,
 	books: state[source].books,
+	fetching: state[source].fetching
 });
 
 const mapDispatchToProps = dispatch => ({
 	downloadWishList: () => dispatch(downloadWishList())
-})
+});
 
-// const mapDispatchToProps = dispatch => ({
-// 	loadBooks: () => dispatch(loadBooks(source)),
-// 	testAsk: () => dispatch(requestApi('harry+potter', source))
-// });
+WishList.propTypes = {
+	books: PropTypes.array,
+	fetching: PropTypes.bool,
+	downloadWishList: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishList);
-
-//			<button onClick={loadBooks}>load</button> 
-//			<button onClick={testAsk}>ask for harry potter</button>

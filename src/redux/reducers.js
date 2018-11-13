@@ -22,12 +22,6 @@ const defaultState = {
 		loading: false,
 		books: []
 	},
-	rightBarData: {    
-		loading: false,
-		books: [
-			{id: '0123', title: 'Lod', author: 'Jacek Dukaj', photo: 'xxx', description: 'Placing assured be if'},
-		]
-	},
 	wishListData: {    
 		loading: false,
 		books: getWishListData()

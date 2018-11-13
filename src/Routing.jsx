@@ -1,16 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
-
+import About from './About';
+import AuthorDetails from './AuthorDetails';
+import Browser from './Browser';
+import Footer from './Footer';
 import Header from './Header';
 import Home from './Home';
-import Browser from './Browser';
-import WishList from './WishList';
-import About from './About';
-import NoMatch from './NoMatch'; 
 import LeftBar from './LeftBar';
-import RightBar from './RightBar';
-import Footer from './Footer';
-import AuthorDetails from './AuthorDetails';
+import NoMatch from './NoMatch'; 
+import WishList from './WishList';
 
 const Routing = () => {
 	return (
@@ -34,11 +32,10 @@ const Routing = () => {
 					<Route component={NoMatch}/>                
 				</Switch>
 				<LeftBar />
-				<RightBar />
 				<Footer />
 			</div>
 		</BrowserRouter>
-	)
-}
+	);
+};
 
 export default Routing;
