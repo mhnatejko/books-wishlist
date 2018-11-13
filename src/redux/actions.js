@@ -44,7 +44,8 @@ export const loaderOn = (source) => ({
 
 
 export function requestApi(keyWord, source){
-    if(keyWord) keyWord = keyWord.split(" ").join("+");
+    console.log(keyWord);
+    if(keyWord && typeof keyWord === 'string') keyWord = keyWord.split(' ').join('+');
     return function(dispatch){
         dispatch(loaderOn(source));
         fetch(FETCHING.searchURI(keyWord), FETCHING.fetchOptions)   
@@ -107,15 +108,20 @@ export const addToWishList = (data) => ({
     type: CONSTANTS.ADD_TO_WISHLIST,
     data,
     source: 'wishListData'
-})
+});
 
 export const removeFromWishList = (bookID, source) => ({
     type: CONSTANTS.REMOVE_FROM_WISHLIST,
     bookID,
     source
-})
+});
 
 export const downloadWishList = () => ({
     type: CONSTANTS.DOWNLOAD_WISH_LIST
+});
+
+export const changeLeftBarValue = value => ({
+    type: CONSTANTS.CHANGE_LEFT_BAR_VALUE,
+    value
 })
 

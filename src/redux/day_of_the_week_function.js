@@ -1,22 +1,30 @@
-function suggestion(base){
-    var date = new Date(); 
-    return base[date.getDay()]
-}
 
-export function todayDay(){
-    var days = ['sunday','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']; 
-    return suggestion(days);
+function todayDay(){
+    const days = ['sunday','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']; 
+    let date = new Date(); 
+    return days[date.getDay()]
 }
 
 function todayMonth(){
-    var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-    return suggestion(months);
+    const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    let date = new Date(); 
+    return months[date.getMonth()]
 }
 
 
 let index = 1;
-function intervalChanger() {    
-    return setTimeout(() => {if(index % 2 === 0){todayDay(); intervalChanger()}else{todayMonth(); intervalChanger()}; index++} ,1000)
+
+export function dayOrMonth(){
+    console.log(index)
+    index++;
+    if(index % 2 === 0){
+        return todayDay();
+    }else{
+        return todayMonth();
+    }
 }
 
-intervalChanger()
+// export function intervalDayOrMonth(){
+//     return setTimeout(() => {dayOrMonth(); intervalDayOrMonth()}, 2000)
+// } 
+

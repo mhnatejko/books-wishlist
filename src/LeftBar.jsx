@@ -2,15 +2,18 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import BookCards from './BookCards';
 import SpinnerComponent from './SpinnerComponent';
-import { requestApi } from './redux/actions';
-import { todayDay } from './redux/day_of_the_week_function';
+import { requestApi, changeLeftBarValue } from './redux/actions';
+import { dayOrMonth } from './redux/day_of_the_week_function';
 
 const source = 'leftBarData';
-const searchValue = todayDay();
 class LeftBar extends Component {
 
 	componentDidMount(){
-		this.props.search(searchValue, source)
+		this.props.search(this.props.leftBarValue, source);
+		let dayOrMonthInterval = setInterval(() => {
+			this.props.changeLeftBarValue(dayOrMonth())
+			this.props.search(this.props.leftBarValue, source)
+		}, 60000);
 	}
 	render(){
 		return (
@@ -32,10 +35,12 @@ class LeftBar extends Component {
 const mapStateToProps = state => ({
 	loading: state[source].loading,
 	books: state[source].books,
+	leftBarValue: state.leftBarValue
 });
 
 const mapDispatchToProps = dispatch => ({
-	search: (searchValue, source) => dispatch(requestApi(searchValue, source))
+	search: (searchValue, source) => dispatch(requestApi(searchValue, source)),
+	changeLeftBarValue: value => dispatch(changeLeftBarValue(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeftBar);

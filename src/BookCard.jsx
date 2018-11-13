@@ -23,7 +23,7 @@ const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWis
             <p>author:{data.best_book_author_name}</p>
             {data.details && <p>publisher: {data.publisher}</p>}
             {data.details ? 
-                <p>publication date: {data.publication_month}.{data.publication_day}.{data.original_publication_year}</p> 
+                <p>publication date: {data.publication_day}.{data.publication_month}.{data.original_publication_year}</p> 
                 : 
                 <p>publication date: {data.original_publication_year}</p>
             }

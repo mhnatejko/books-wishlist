@@ -2,12 +2,14 @@ import * as CONSTANTS from './constants';
 import { getWishListData, setWishListData } from './store_wishList';
 import { fileMaker } from './download_function';
 
+import { dayOrMonth } from './day_of_the_week_function'
 
 
 const defaultState = {
 	searchValue: undefined,
 	filterValue: undefined,
 	temporaryBooksTable: undefined,
+	leftBarValue: dayOrMonth(),
 	browserData: {
 		loading: false,
 		books: []
@@ -171,6 +173,12 @@ function reducer(state = defaultState, action){
 	break;
 	case CONSTANTS.DOWNLOAD_WISH_LIST:
 		fileMaker();
+	break;
+	case CONSTANTS.CHANGE_LEFT_BAR_VALUE:
+		return {
+			...state,
+			leftBarValue: action.value
+		}
 	break;
 	default:
 		return {...state};
