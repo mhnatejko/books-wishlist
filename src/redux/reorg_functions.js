@@ -42,7 +42,25 @@ export function loadBooksDetails(jsApiRespObj_details){
         [],
         book_link: smallJsApiRespObj_details['url']['_cdata']
     }    
-    return reorgData;   
-    
+    return reorgData;       
+}
+
+export function loadAuthorDetails(jsApiRespObj_authorDetails){
+    const smallJsApiRespObj_authorDetails = {...jsApiRespObj_authorDetails['GoodreadsResponse']['author']};
+    const reorgData = {
+        name: smallJsApiRespObj_authorDetails['name']['_text'],
+        about: smallJsApiRespObj_authorDetails['about']['_cdata'],
+        books: [...smallJsApiRespObj_authorDetails['books']['book'].map(book => book.title['_text'])],
+        born_at: smallJsApiRespObj_authorDetails['born_at']['_text'] && smallJsApiRespObj_authorDetails['born_at']['_text'].split('/').reverse().join('.'),
+        died_at: smallJsApiRespObj_authorDetails['died_at']['_text'] && smallJsApiRespObj_authorDetails['died_at']['_text'].split('/').reverse().join('.'),
+        gender: smallJsApiRespObj_authorDetails['gender']['_text'],
+        hometown: smallJsApiRespObj_authorDetails['hometown']['_text'],
+        image_url: smallJsApiRespObj_authorDetails['image_url']['_cdata'],
+        large_image_url: smallJsApiRespObj_authorDetails['large_image_url']['_cdata'],
+        works_count: smallJsApiRespObj_authorDetails['works_count']['_text'],
+        influences: smallJsApiRespObj_authorDetails['influences']['_cdata'],
+        link: smallJsApiRespObj_authorDetails['link']['_cdata']
+    }
+    return reorgData; 
 }
 

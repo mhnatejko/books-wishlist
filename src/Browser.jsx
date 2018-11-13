@@ -7,7 +7,7 @@ import SpinnerComponent from './SpinnerComponent';
 const source = 'browserData'
 const Browser = ({ books, loading }) => {
     return (
-        <div>
+		<div>
             <h1>Search books or authors</h1>
             <SearchSort source={source}/>
             {

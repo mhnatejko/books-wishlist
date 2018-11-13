@@ -10,6 +10,7 @@ import NoMatch from './NoMatch';
 import LeftBar from './LeftBar';
 import RightBar from './RightBar';
 import Footer from './Footer';
+import AuthorDetails from './AuthorDetails';
 
 const Routing = () => {
 	return (
@@ -29,6 +30,7 @@ const Routing = () => {
 					<Route path= "/browser" component={Browser}/>
 					<Route path= "/wish-list" component={WishList}/>
 					<Route path= "/about" component={About}/>
+					<Route path= "/author" component={AuthorDetails}/>
 					<Route component={NoMatch}/>                
 				</Switch>
 				<LeftBar />

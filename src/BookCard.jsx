@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
-import { requestDetailsApi, addToWishList, removeFromWishList } from './redux/actions';
+import { requestDetailsApi, requestAuthorDetailsApi, addToWishList, removeFromWishList } from './redux/actions';
 import SpinnerComponent from './SpinnerComponent';
+import { Link } from 'react-router-dom';
 
-const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWishList, wishListDataBooks}) => {
+const BookCard = ({data, source, requestDetailsApi, requestAuthorDatails, addToWishList, removeFromWishList, wishListDataBooks}) => {
     return (
         <div key={data.best_book_id}>
             {
@@ -20,7 +21,12 @@ const BookCard = ({data, source, requestDetailsApi, addToWishList, removeFromWis
             
             <p>title:{data.best_book_title}</p>
             {data.best_book_title !== data.details && <p>{data.original_title}</p>}
-            <p>author:{data.best_book_author_name}</p>
+            
+            <p>author:</p>
+            <Link to='/author'> 
+                <p onClick={() => requestAuthorDatails(data.best_book_author_id)}>{data.best_book_author_name}</p>
+            </Link>
+            
             {data.details && <p>publisher: {data.publisher}</p>}
             {data.details ? 
                 <p>publication date: {data.publication_day}.{data.publication_month}.{data.original_publication_year}</p> 
@@ -57,6 +63,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     requestDetailsApi: (bookID, source) => dispatch(requestDetailsApi(bookID, source)),
+    requestAuthorDatails: (authorID) => dispatch(requestAuthorDetailsApi(authorID, 'authorDetails')),
     addToWishList: (data) => dispatch(addToWishList(data)),
     removeFromWishList: (bookID, source) => dispatch(removeFromWishList(bookID, source))
 });

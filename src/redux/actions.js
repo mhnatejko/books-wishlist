@@ -1,7 +1,7 @@
 import * as CONSTANTS from './constants';
 import convert from 'xml-js';
 import * as FETCHING from './request_functions';
-import { loadBooksList, loadBooksDetails } from './reorg_functions';
+import { loadBooksList, loadBooksDetails, loadAuthorDetails } from './reorg_functions';
 
 export const loadBooks = (source) => ({
     type: CONSTANTS.LOAD_BOOKS,
@@ -91,6 +91,32 @@ export function requestDetailsApi(bookID, source){
             .catch(err => console.log(err));
     }
 };
+
+export const setAuthorDetails = data => ({
+    type: CONSTANTS.SET_AUTHOR_DETAILS,
+    data
+})
+
+export function requestAuthorDetailsApi(authorID, source){
+    return function(dispatch){
+        dispatch(loaderOn(source));
+        fetch(FETCHING.authorDetails(authorID), FETCHING.fetchOptions)
+            .then(res => res.text())
+            .then(res => {
+                dispatch(
+                    setAuthorDetails(
+                        loadAuthorDetails(
+                            convert.xml2js(
+                                res, FETCHING.converterOptions
+                            )
+                        )
+                    )
+                );
+                dispatch(loaderOff(source));
+            })
+            .catch(err => console.log(err))
+    }
+}
 
 export const sortBy = (keyWord, source) => ({
     type: CONSTANTS.SORT_BY,
