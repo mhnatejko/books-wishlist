@@ -1,0 +1,14 @@
+.header {
+    position: relative;
+}
+
+.header__navigation {
+    position: absolut;
+    right: 0;
+    top: 0;
+    ul > * {
+        margin: 2rem;
+        
+
+    }
+}

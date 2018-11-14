@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import About from './About';
 import AuthorDetails from './AuthorDetails';
 import Browser from './Browser';
@@ -13,16 +13,8 @@ import WishList from './WishList';
 const Routing = () => {
 	return (
 		<BrowserRouter>
-			<div>
-				<div>
-					<Header />
-					<ul>
-						<NavLink to="/">Home</NavLink>
-						<NavLink to="/browser">Browser</NavLink>
-						<NavLink to="/wish-list">Wish list</NavLink>
-						<NavLink to="/about">about</NavLink>
-					</ul>
-				</div>
+			<div className='content'>
+				<Header />					
 				<Switch>
 					<Route exact path= "/" component={Home}/>
 					<Route path= "/browser" component={Browser}/>

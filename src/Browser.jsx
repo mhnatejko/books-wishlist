@@ -9,17 +9,19 @@ import SpinnerComponent from './SpinnerComponent';
 const source = 'browserData';
 const Browser = ({ books, loading }) => {
 	return (
-		<div>
-			<h1>Search books or authors</h1>
+		<section className='main sorted-component browser'>			
 			<SearchSort source={source}/>
-			{
-				loading 
-					? 
-					<SpinnerComponent />
-					:
-					<BookCards source={source} books={books}/>
-			}      		
-		</div>
+			<div className='sorted-component_content'>
+				<h1>Search books or authors</h1>
+				{
+					loading 
+						? 
+						<SpinnerComponent />
+						:
+						<BookCards source={source} books={books}/>
+				} 
+			</div>     		
+		</section>
 	);
 };
 

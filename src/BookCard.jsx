@@ -22,7 +22,7 @@ const BookCard = ({
 	requestDetailsApi
 }) => {
 	return (
-		<div key={data.best_book_id}>
+		<div key={data.best_book_id} className='book-card'>
 			{
 				data.best_book_image_url 
                 && !data.best_book_image_url.includes('nophoto') 
@@ -62,8 +62,8 @@ const BookCard = ({
                 	<p>language: {data.language_code}</p>
                 	<div dangerouslySetInnerHTML={{__html: data.description}} />
                 	<p>tags:</p>
-                	<div>
-                		{data.tags && data.tags.map(tag => <p>{tag['_attributes'].name}</p>)}
+                	<div className='book-card__tags'>
+                		{data.tags && data.tags.map(tag => <p className='book-card__tag'>{tag['_attributes'].name}</p>)}
                 	</div>
                 	<a href={data.book_link}>book on goodereads</a>
                 </div>            

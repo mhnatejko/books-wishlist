@@ -9,19 +9,22 @@ import SpinnerComponent from './SpinnerComponent';
 const source = 'wishListData';
 const WishList = ({ books, fetching, downloadWishList }) => {
 	return (
-		<div>
-			<h1>Your wishlist of books</h1>
-			<p>save list to file</p>
-			<button download="wishList.txt" onClick={downloadWishList}>save &#8681;</button>
+		<section className='main sorted-component wish-list'>
 			<SearchSort source={source}/>
-			{
-				fetching 
-					? 
-					<SpinnerComponent />
-					:
-					<BookCards books={books} source={source}/>
-			}      			 
-		</div>
+			<div className='sorted-component_content'>
+				<h1>Your wishlist of books</h1>
+				<p>save list to file</p>
+				<button download="wishList.txt" onClick={downloadWishList}>save &#8681;</button>
+				
+				{
+					fetching 
+						? 
+						<SpinnerComponent />
+						:
+						<BookCards books={books} source={source}/>
+				}      			 
+			</div>
+		</section>
 	);    
 };
 

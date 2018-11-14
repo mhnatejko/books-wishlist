@@ -8,35 +8,42 @@ import SpinnerComponent from './SpinnerComponent';
 
 const AuthorDetails = ({ data, loading, search }) => {
 	return (
-		data.length < 0 ?
-			<div>
-				<h1>Informations about author</h1>
-				{
-					loading 
-						? 
-						<SpinnerComponent />
-						:
-						<div>
-							<img src={data.image_url} alt={data.name}/>
-							<p>{data.name}</p>
-							{data.born_at && <p>{data.born_at} - {data.died_at}</p>}
-							<div dangerouslySetInnerHTML={{__html: data.about}}/>    
-							<p>{data.hometown}</p>
-							<p>{data.works_count}</p>
-							{data.gender && <p>some of {data.gender === 'male' ? 'his': 'her'} publications</p>}
-							{data.books && <div>{data.books.map(book => 
-								<Link to='/browser'>
-									<p onClick={() => search(book, 'browserData')}>{book}</p>
-								</Link>
-							)}</div>}          
-							{data.link && <a href={data.link}>author on goodreads</a>}
-						</div>
-				}  
-            
-			</div>
+		<section class='main author'>
+			{
+				data ?
+				<div>
+					<h1>Informations about author</h1>
+					{
+						loading 
+							? 
+							<SpinnerComponent />
+							:
+							<div>
+								<img src={data.image_url} alt={data.name}/>
+								<p>{data.name}</p>
+								{data.born_at && <p>{data.born_at} - {data.died_at}</p>}
+								<div dangerouslySetInnerHTML={{__html: data.about}}/>    
+								<p>{data.hometown}</p>
+								<p>{data.works_count}</p>
+								{data.gender && <p>some of {data.gender === 'male' ? 'his': 'her'} publications</p>}
+								{data.books && <div>{data.books.map(book => 
+									<Link to='/browser'>
+										<p onClick={() => search(book, 'browserData')}>{book}</p>
+									</Link>
+								)}</div>}          
+								{data.link && <a href={data.link}>author on goodreads</a>}
+							</div>
+					}  
+				
+				</div>
 			: <p>No author choosed</p>
+			}
+		</section>
+		
+		
+		
 	);
-} ;
+};
 
 const mapStateToProps = state => ({
 	data: state['authorDetails'].data,

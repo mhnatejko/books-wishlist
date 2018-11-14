@@ -23,7 +23,7 @@ const SearchSort = ({
 	var testRef = React.createRef();
 	
 	return (
-		<div>
+		<div className='search-sort'>
 			<h3>{source === 'browserData' && 'Search &'} Sort</h3>
 			<div onKeyPress={e => {if(e.keyCode === 13 || e.which === 13) return search(searchValue, source)} }>                
 				<input 
