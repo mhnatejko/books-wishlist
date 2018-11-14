@@ -1,8 +1,8 @@
 import * as CONSTANTS from './constants';
-import { getWishListData, setWishListData } from './store_wishList';
-import { fileMaker } from './download_function';
+import { getWishListData, setWishListData } from '../special_functions/store_wishList';
+import { fileMaker } from '../special_functions/download_function';
 
-import { dayOrMonth } from './day_of_the_week_function'
+import { dayOrMonth } from '../special_functions/day_of_the_week_function'
 
 
 const defaultState = {

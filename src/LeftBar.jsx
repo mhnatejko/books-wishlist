@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { requestApi, changeLeftBarValue, changeFilterVal } from './redux/actions';
-import { dayOrMonth } from './redux/day_of_the_week_function';
+import { dayOrMonth } from './special_functions/day_of_the_week_function';
 import BookCards from './BookCards';
 import SpinnerComponent from './SpinnerComponent';
 

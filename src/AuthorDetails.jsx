@@ -8,7 +8,7 @@ import SpinnerComponent from './SpinnerComponent';
 
 const AuthorDetails = ({ data, loading, search }) => {
 	return (
-		data ?
+		data.length < 0 ?
 			<div>
 				<h1>Informations about author</h1>
 				{
@@ -19,18 +19,17 @@ const AuthorDetails = ({ data, loading, search }) => {
 						<div>
 							<img src={data.image_url} alt={data.name}/>
 							<p>{data.name}</p>
-							<p>{data.gender}</p>
-							<p>{data.born_at}</p>
-							<p>{data.died_at}</p>
+							{data.born_at && <p>{data.born_at} - {data.died_at}</p>}
 							<div dangerouslySetInnerHTML={{__html: data.about}}/>    
 							<p>{data.hometown}</p>
 							<p>{data.works_count}</p>
+							{data.gender && <p>some of {data.gender === 'male' ? 'his': 'her'} publications</p>}
 							{data.books && <div>{data.books.map(book => 
 								<Link to='/browser'>
 									<p onClick={() => search(book, 'browserData')}>{book}</p>
 								</Link>
 							)}</div>}          
-							<a></a>
+							{data.link && <a href={data.link}>author on goodreads</a>}
 						</div>
 				}  
             

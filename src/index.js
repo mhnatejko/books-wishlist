@@ -6,7 +6,7 @@ import Routing from './Routing';
 import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 import reducer from './redux/reducers';
-//import './index.css';
+import './styles/index.scss';
 
 const store = createStore(
 	reducer,

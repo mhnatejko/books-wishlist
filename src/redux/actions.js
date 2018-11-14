@@ -1,7 +1,7 @@
 import * as CONSTANTS from './constants';
 import convert from 'xml-js';
-import * as FETCHING from './request_functions';
-import { loadBooksList, loadBooksDetails, loadAuthorDetails } from './reorg_functions';
+import * as FETCHING from '../special_functions/request_functions';
+import { loadBooksList, loadBooksDetails, loadAuthorDetails } from '../special_functions/reorg_functions';
 
 export const loadBooks = (source) => ({
     type: CONSTANTS.LOAD_BOOKS,
@@ -44,7 +44,6 @@ export const loaderOn = (source) => ({
 
 
 export function requestApi(keyWord, source){
-    console.log(keyWord);
     if(keyWord && typeof keyWord === 'string') keyWord = keyWord.split(' ').join('+');
     return function(dispatch){
         dispatch(loaderOn(source));
