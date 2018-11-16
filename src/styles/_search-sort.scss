@@ -1,0 +1,170 @@
+.search-sort {
+   
+    padding: $padding-comp;
+    grid-area: search-sort;
+    padding: $padding-comp;
+    background:  #00000069;
+
+    h3 {
+         width: 100%;
+         text-align: center; 
+    }
+    & * {
+        margin: .5rem 0 ;
+        
+    }
+    &__sort-panel, 
+    &__filter-panel {
+        border-top: 1px solid rgba(0, 0, 0, 0.404);
+        margin: 2rem 0;
+        flex: 1;
+    }
+    &__etiquette {
+        font-weight: 800 ;
+    }
+
+    label {
+        margin: 0 .8rem;
+    }
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {   
+    .search-sort {
+        padding: .5rem;
+        display: flex;
+        flex-direction: column;
+       
+        &__form {
+            display: flex;
+            flex-direction: column;
+
+            & * {
+                display: flex;
+                flex-direction: row;                
+                margin: .1rem;
+                & div {
+                    margin-left: 1rem;
+                }
+            };
+           
+        };
+        &__sort-panel, 
+        &__filter-panel {
+            border-top: none;
+        }
+        input {
+            
+            flex-grow: 1;
+        }
+    };
+    
+
+};
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {  
+    .search-sort {
+        padding: .5rem;
+        display: flex;
+        flex-direction: column;
+       
+        &__form {
+            display: flex;
+            flex-direction: column;
+
+            & * {
+                display: flex;
+                flex-direction: row;                
+                margin: .1rem;
+                & div {
+                    margin-left: 1rem;
+                }
+            };
+           
+        };
+        &__sort-panel, 
+        &__filter-panel {
+            border-top: none;
+        }
+        input {
+            
+            flex-grow: 1;
+        }
+    };
+     
+} ;
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .search-sort {
+        padding: .3rem;
+        display: flex;
+        flex-direction: column;
+       
+        &__form {
+            display: flex;
+            flex-direction: column;
+
+            & > * {
+                display: flex;
+                flex-direction: column;                
+                margin: .1rem;
+                & div {
+                    margin-left: 1rem;
+                }
+            };
+           
+        };
+        &__sort-panel, 
+    &__filter-panel {
+        border-top: 1px solid rgba(0, 0, 0, 0.404);
+        margin: 1rem 0;
+        flex: 1;
+    }
+        input {
+            
+            flex-grow: 1;
+        }
+    };
+} ;
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) { 
+    .search-sort {
+        padding: .5rem;
+        display: flex;
+        flex-direction: column;
+       
+        &__form {
+            display: flex;
+            flex-direction: column;
+
+            & * {
+                display: flex;
+                flex-direction: row;                
+                margin: .1rem;
+                & div {
+                    margin-left: 1rem;
+                }
+            };
+           
+        };
+        &__sort-panel, 
+        &__filter-panel {
+            border-top: 1px solid rgba(0, 0, 0, 0.404);
+            margin: 1rem 0;
+            flex: 1;
+        }
+        input {
+            
+            flex-grow: 1;
+        }
+    };
+} ;
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {   
+};

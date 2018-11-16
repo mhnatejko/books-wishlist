@@ -1,0 +1,25 @@
+@import './_constants.scss';
+$padding-comp: 2rem;
+.footer {
+    padding: $padding-comp;
+    background: $footer-green;
+    grid-area: footer;
+    display: flex;
+    flex-direction: row;
+
+    * {
+        margin: 0 1rem;
+    }
+    
+    div {
+        background-image: url('./logo-fe2ef7d630d5f23daf46230e8592cd99.png');
+        filter: brightness(300%) contrast(100%) sepia(2);
+        background-repeat: no-repeat;
+        background-size: contain;
+        //background-image: url('./photo-1515125520141-3e3b67bc0a88.jpg');
+        width: 100px;
+        height: 2.5rem;;
+    }
+
+    
+}

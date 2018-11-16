@@ -22,7 +22,7 @@ const AuthorDetails = ({ data, loading, search }) => {
 								<img src={data.image_url} alt={data.name}/>
 								<p>{data.name}</p>
 								{data.born_at && <p>{data.born_at} - {data.died_at}</p>}
-								<div dangerouslySetInnerHTML={{__html: data.about}}/>    
+								<div className='auth-details__descript' dangerouslySetInnerHTML={{__html: data.about}}/>    
 								<p>{data.hometown}</p>
 								<p>{data.works_count}</p>
 								{data.gender && <p>some of {data.gender === 'male' ? 'his': 'her'} publications</p>}

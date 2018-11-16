@@ -17,7 +17,7 @@ class LeftBar extends Component {
 	}
 	render(){
 		return (
-			<aside class='left-bar'>
+			<aside className='left-bar'>
 				<h3>Suggestions for today</h3>
 				{
 					this.props.loading 

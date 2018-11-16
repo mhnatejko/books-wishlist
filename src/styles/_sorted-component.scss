@@ -1,0 +1,91 @@
+
+$padding-comp: 2rem;
+
+.sorted-component {
+    display: grid;
+    grid-template-columns: 1fr minmax(min-content, max-content);
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "sorted-component_content search-sort";
+    grid-gap: 2rem;
+
+    &_content {
+        padding: $padding-comp;
+        grid-area: sorted-component_content;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) { 
+    .sorted-component {
+        
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 20vh 1fr;
+        grid-template-areas: 
+        "search-sort" 
+        "sorted-component_content";
+        grid-gap: 2rem;
+        &_content {
+            padding: $padding-comp;
+            grid-area: sorted-component_content;
+        }
+    }  
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {   
+    .sorted-component {
+        
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 20vh 1fr;
+        grid-template-areas: 
+        "search-sort" 
+        "sorted-component_content";
+        grid-gap: 2rem;
+        &_content {
+            padding: $padding-comp;
+            grid-area: sorted-component_content;
+        }
+    }  
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .sorted-component {
+        display: grid;
+        grid-template-columns: 1fr min-content;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+        "sorted-component_content search-sort";
+        grid-gap: 2rem;
+    
+        &_content {
+            padding: $padding-comp;
+            grid-area: sorted-component_content;
+        }
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) { 
+    .sorted-component {
+        display: grid;
+        grid-template-columns: 1fr minmax(min-content, max-content);
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+        "sorted-component_content search-sort";
+        grid-gap: 2rem;
+    
+        &_content {
+            padding: $padding-comp;
+            grid-area: sorted-component_content;
+        }
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {   
+}
