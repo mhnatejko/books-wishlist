@@ -13,9 +13,10 @@ const WishList = ({ books, fetching, downloadWishList }) => {
 			<SearchSort source={source}/>
 			<div className='sorted-component_content'>
 				<h1>Your wishlist of books</h1>
+				<div className='wish-list__save'>
 				<p>save list to file</p>
 				<button download="wishList.txt" onClick={downloadWishList}>save <span className="fas fa-file-download"/> {/*&#8681;*/}</button>
-				
+				</div>
 				{
 					fetching 
 						? 

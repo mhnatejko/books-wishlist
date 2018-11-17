@@ -2,6 +2,7 @@
 $padding-comp: 2rem;
 
 .sorted-component {
+    
     display: grid;
     grid-template-columns: 1fr minmax(min-content, max-content);
     grid-template-rows: 1fr;
@@ -22,7 +23,7 @@ $padding-comp: 2rem;
         
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 20vh 1fr;
+        grid-template-rows: 25vh 1fr;
         grid-template-areas: 
         "search-sort" 
         "sorted-component_content";
@@ -40,7 +41,7 @@ $padding-comp: 2rem;
         
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 20vh 1fr;
+        grid-template-rows: 23vh 1fr;
         grid-template-areas: 
         "search-sort" 
         "sorted-component_content";
@@ -88,4 +89,14 @@ $padding-comp: 2rem;
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {   
+}
+
+
+.wish-list__save {
+   display: flex;
+   justify-content: flex-end;;
+   align-items: center;
+   & > * { 
+       margin: 0 .5rem;
+   }
 }

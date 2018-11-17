@@ -1,12 +1,13 @@
 .left-bar-cards {
 }
 
-// @media only screen and (max-width: 600px) {
-//     .left-bar-cards {
-//        display: inline-block;
-//        height: 10rem;
-//        overflow: scroll;
+@media only screen and (max-width: 600px) {
+    .left-bar-cards {
+       display: flex;
+       flex-direction: row;
+       
+       overflow: scroll;
        
        
-//     }
-// }
+    }
+}

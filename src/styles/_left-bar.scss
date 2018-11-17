@@ -6,8 +6,7 @@
     // box-shadow: inset 0px -54px 59px -20px rgba(0,0,0,0.62);
     // box-shadow: inset 0px 54px 59px -20px rgba(0,0,0,0.62);
     padding: $padding-comp;
-    //background: rgb(228, 211, 218);
-    background: #00000069;
+    background: $dark-transparent;
     grid-area: left-bar;
     display: block;
     overflow-x: hidden;

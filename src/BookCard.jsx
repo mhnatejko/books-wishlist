@@ -32,8 +32,8 @@ const BookCard = ({
 			</div>    
 			{
 				source !== 'wishListData' &&  !wishListDataBooks.some(book => book.best_book_id === data.best_book_id)
-					? <button className="btn--book-card" onClick={() => addToWishList(data)}>+</button> 
-					: <button className="btn--book-card" onClick={() => removeFromWishList(data.best_book_id, 'wishListData')}>-</button>
+					? <button className="book-card__btn book-card__btn--plus" onClick={() => addToWishList(data)}>+</button> 
+					: <button className="book-card__btn book-card__btn--minus" onClick={() => removeFromWishList(data.best_book_id, 'wishListData')}>-</button>
 			}
 			<div className='book-card__info'>
 				<p></p>

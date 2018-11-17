@@ -1,5 +1,5 @@
 @import './_constants.scss';
-
+$padding-comp: 2rem;
 *, 
 *::before, 
 *::after {
@@ -51,142 +51,9 @@ body {
             cursor: pointer;
             background: lighten($dark-font, 10%);
         }
-    }
-    
-    i {
-        color: $light-font;
-        size: 1rem;
-    }
+    }    
 }
 
-////
-
-
-$padding-comp: 2rem;
-
-
-
-.search-sort {
-    padding: $padding-comp;
-    grid-area: search-sort;
-    padding: $padding-comp;
-    background: rgb(219, 185, 199);
-}
-
-.header {
-    padding: $padding-comp;
-    //background: #E34528;
-    grid-area: header;
-}
-
-
-
-.main {
-    
+.main {    
     grid-area: main;
-}
-
-
-/////////////////////
-.content {
-    padding: $padding-comp;
-    max-width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 25vw 1fr;
-    grid-template-rows: 20vh min-content 10vh;
-    grid-template-areas: 
-    "header header header"
-    "left-bar main main"
-    "footer footer footer";
-    grid-gap: 2rem;    
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    $padding-comp: .5rem;
-    .content {        
-        padding: 0;
-        grid-template-columns: 1fr;
-        grid-template-rows: 20vh 1fr 1fr 7vh;
-        grid-template-areas: 
-        "header"
-        "main"
-        "left-bar"
-        "footer";
-        grid-gap: 1rem;    
-    }
-} 
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    $padding-comp: 1rem;
-    .content {
-        padding: $padding-comp;
-        max-width: 100vw;
-        height: 100vh;
-        display: grid;
-        grid-template-columns: 25vw 1fr;
-        grid-template-rows: 20vh 1fr 10vh;
-        grid-template-areas: 
-        "header header header"
-        "left-bar main main"
-        "footer footer footer";
-        grid-gap: 2rem;    
-    }
-} 
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    $padding-comp: 1rem;
-    .content {
-        padding: $padding-comp;
-        max-width: 100vw;
-        height: 100vh;
-        display: grid;
-        grid-template-columns: 25vw 1fr;
-        grid-template-rows: 20vh 1fr 10vh;
-        grid-template-areas: 
-        "header header header"
-        "left-bar main main"
-        "footer footer footer";
-        grid-gap: 2rem;    
-    }
-    
-} 
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-    $padding-comp: 2rem;
-    .content {
-        padding: $padding-comp;
-        max-width: 100vw;
-        height: 100vh;
-        display: grid;
-        grid-template-columns: 25vw 1fr;
-        grid-template-rows: 20vh 1fr 10vh;
-        grid-template-areas: 
-        "header header header"
-        "left-bar main main"
-        "footer footer footer";
-        grid-gap: 2rem;    
-    }
-} 
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-    $padding-comp: 3rem;
-    .content {
-        padding: $padding-comp;
-        max-width: 100vw;
-        height: 100vh;
-        display: grid;
-        grid-template-columns: 25vw 1fr;
-        grid-template-rows: 20vh 1fr 10vh;
-        grid-template-areas: 
-        "header header header"
-        "left-bar main main"
-        "footer footer footer";
-        grid-gap: 2rem;    
-    }
 }

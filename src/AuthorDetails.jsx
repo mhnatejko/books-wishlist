@@ -8,35 +8,43 @@ import SpinnerComponent from './SpinnerComponent';
 
 const AuthorDetails = ({ data, loading, search }) => {
 	return (
-		<section class='main author'>
+		<section className='main author'>
 			{
 				data ?
-				<div>
-					<h1>Informations about author</h1>
-					{
-						loading 
-							? 
-							<SpinnerComponent />
-							:
-							<div>
-								<img src={data.image_url} alt={data.name}/>
-								<p>{data.name}</p>
-								{data.born_at && <p>{data.born_at} - {data.died_at}</p>}
-								<div className='auth-details__descript' dangerouslySetInnerHTML={{__html: data.about}}/>    
-								<p>{data.hometown}</p>
-								<p>{data.works_count}</p>
-								{data.gender && <p>some of {data.gender === 'male' ? 'his': 'her'} publications</p>}
-								{data.books && <div>{data.books.map(book => 
-									<Link to='/browser'>
-										<p onClick={() => search(book, 'browserData')}>{book}</p>
-									</Link>
-								)}</div>}          
-								{data.link && <a href={data.link}>author on goodreads</a>}
-							</div>
-					}  
+					<div>
+						<h1>Informations about author</h1>
+						{
+							loading 
+								? 
+								<SpinnerComponent />
+								:
+								<div>
+									<div className="author__main-info">
+										<img src={data.image_url} alt={data.name}/>
+										<div>
+											<h3>{data.name}</h3>
+											{data.born_at && <p>({data.born_at} - {data.died_at})</p>}
+											<br/>
+											<p>{data.hometown}</p>
+											
+										</div>
+									</div>
+									<br/>
+									<div className='author__description' dangerouslySetInnerHTML={{__html: data.about}}/>    
+									<br/>
+									{data.gender && <p>Some of {data.gender === 'male' ? 'his': 'her'} publications:</p>}
+									{data.books && <div>{data.books.map(book => 
+										<Link to='/browser'>
+											<p onClick={() => search(book, 'browserData')}>{book}</p>
+										</Link>
+									)}</div>}  
+									<br/>        
+									<p>Check {data.works_count} records of {data.link && <a href={data.link}>author on goodreads</a>}</p>
+								</div>
+						}  
 				
-				</div>
-			: <p>No author choosed</p>
+					</div>
+					: <p>No author choosed</p> 
 			}
 		</section>
 		
