@@ -1,3 +1,4 @@
+@import './_constants.scss';
 
 $padding-comp: 2rem;
 
@@ -47,7 +48,7 @@ $padding-comp: 2rem;
         "sorted-component_content";
         grid-gap: 2rem;
         &_content {
-            padding: $padding-comp;
+            padding: 0;
             grid-area: sorted-component_content;
         }
     }  
@@ -64,7 +65,7 @@ $padding-comp: 2rem;
         grid-gap: 2rem;
     
         &_content {
-            padding: $padding-comp;
+            padding: .5rem;
             grid-area: sorted-component_content;
         }
     }
@@ -93,10 +94,13 @@ $padding-comp: 2rem;
 
 
 .wish-list__save {
-   display: flex;
-   justify-content: flex-end;;
-   align-items: center;
-   & > * { 
-       margin: 0 .5rem;
-   }
+    background: $dark-transparent;
+    display: flex;
+    justify-content: flex-end;;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem 0;
+    & > * { 
+        margin: 0 .5rem;
+    }
 }

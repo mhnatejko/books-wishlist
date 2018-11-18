@@ -1,13 +1,14 @@
-.left-bar-cards {
-}
-
 @media only screen and (max-width: 600px) {
     .left-bar-cards {
        display: flex;
        flex-direction: row;
-       
-       overflow: scroll;
-       
-       
+       margin-top: 1.6rem;
+       overflow: scroll;  
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .left-bar-cards {
+        padding: 0rem;
     }
 }

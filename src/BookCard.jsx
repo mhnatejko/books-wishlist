@@ -22,8 +22,8 @@ const BookCard = ({
 	requestDetailsApi
 }) => {
 	return (
-		<div key={data.best_book_id} className='book-card'>
-			<div className='book-card__image'>
+		<div key={data.best_book_id} className={`book-card--${source}`}>
+			<div className={`book-card--${source}__image`}>
 				{
 					data.best_book_image_url 
                 && !data.best_book_image_url.includes('nophoto') 
@@ -32,42 +32,41 @@ const BookCard = ({
 			</div>    
 			{
 				source !== 'wishListData' &&  !wishListDataBooks.some(book => book.best_book_id === data.best_book_id)
-					? <button className="book-card__btn book-card__btn--plus" onClick={() => addToWishList(data)}>+</button> 
-					: <button className="book-card__btn book-card__btn--minus" onClick={() => removeFromWishList(data.best_book_id, 'wishListData')}>-</button>
+					? <button className={`book-card--${source}__btn book-card--${source}__btn--plus`} onClick={() => addToWishList(data)}>+</button> 
+					: <button className={`book-card--${source}__btn book-card--${source}__btn--minus`} onClick={() => removeFromWishList(data.best_book_id, 'wishListData')}>-</button>
 			}
-			<div className='book-card__info'>
-				<p></p>
+			<div className={`book-card--${source}__info`}>
 				<Link to='/author'> 
 					<p onClick={() => requestAuthorDatails(data.best_book_author_id)}>{data.best_book_author_name}</p>
 				</Link>
-				<h4>{data.best_book_title}</h4>
+				<h4 className={`book-card--${source}__info--title`}>{data.best_book_title}</h4>
 				{data.best_book_title !== data.details && <p>{data.original_title}</p>}
             
 				
             
 				{data.details && <p>publisher: {data.publisher}</p>}
 				{data.details ? 
-					<p>publication date: {data.publication_day}.{data.publication_month}.{data.original_publication_year}</p> 
+					<p className={`book-card--${source}__info--date`}>publication date: {data.publication_day}.{data.publication_month}.{data.original_publication_year}</p> 
 					: 
-					<p>publication date: {data.original_publication_year}</p>
+					<p className={`book-card--${source}__info--date`}>publication date: {data.original_publication_year}</p>
 				}
 				{data.details ?
-					<p>average rating:{data.average_rating} / 5 of {data.ratings_count} votes</p>
+					<p>rating: {data.average_rating} / 5 of {data.ratings_count} votes</p>
 					:
-					<p>average rating:{data.average_rating} / 5</p>
+					<p>rating: {data.average_rating} / 5</p>
 				}
 			</div>
-			{!data.details && <button className="book-card__more-btn" onClick={() => requestDetailsApi(data.best_book_id, source)}>more</button>}
+			{!data.details && <button className={`book-card--${source}__more-btn`} onClick={() => requestDetailsApi(data.best_book_id, source)}>more</button>}
 			{data.detailsLoading && <SpinnerComponent />}
-			<div className="book-card__details">
+			<div className={`book-card--${source}__details`}>
 				{data.details && 
 					<div>                    
 						<p>country: {data.country}</p> 
 						<p>language: {data.language_code}</p>
 						<div dangerouslySetInnerHTML={{__html: data.description}} />
 						<p>tags:</p>
-						<div className='book-card__tags'>
-							{data.tags && data.tags.map((tag, i) => <p key={i} className='book-card__tag'>{tag['_attributes'].name}</p>)}
+						<div className={`book-card--${source}__tags`}>
+							{data.tags && data.tags.map((tag, i) => <p key={i} className={`book-card--${source}__tag`}>{tag['_attributes'].name}</p>)}
 						</div>
 						<a href={data.book_link}>book on goodereads</a>
 					</div>            

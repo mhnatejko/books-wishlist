@@ -121,27 +121,29 @@
         padding-top: 1rem;
     }
         input {          
-            margin-top: 0
+            margin-top: 1rem
         }
     };
 } ;
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) { 
-    .search-sort {
-       
-        padding: 1rem;
-        &__form {
-            display: flex;
-            flex-direction: column;
-            & * {
-                display: flex;
-                flex-direction: row;    
-            };
-        };
-
-    };
+    
 } ;
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {   
+@media only screen and (min-width: 1200px) {  
+    .search-sort {
+       
+            padding: 1rem;
+            &__form {
+                display: flex;
+                flex-direction: column;
+                & * {
+                    display: flex;
+                    flex-direction: row;    
+                };
+            };
+    
+        };
+         
 };
