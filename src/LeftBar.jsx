@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { requestApi, changeLeftBarValue, changeFilterVal } from './redux/actions';
+import { requestApi, changeLeftBarValue } from './redux/actions';
 import { dayOrMonth } from './special_functions/day_of_the_week_function';
 import BookCards from './BookCards';
 import SpinnerComponent from './SpinnerComponent';
@@ -10,7 +10,8 @@ const source = 'leftBarData';
 class LeftBar extends Component {
 	componentDidMount(){
 		this.props.search(this.props.leftBarValue, source);
-		let dayOrMonthInterval = setInterval(() => {
+		//let dayOrMonthInterval = 
+		setInterval(() => {
 			this.props.changeLeftBarValue(dayOrMonth());
 			this.props.search(this.props.leftBarValue, source);
 		}, 60000);

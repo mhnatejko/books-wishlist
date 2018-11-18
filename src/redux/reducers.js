@@ -94,7 +94,9 @@ function reducer(state = defaultState, action){
 					}
 				};				
 			}
-		};
+		}else{
+			return {...state}
+		}
 		break;
 	case CONSTANTS.SET_DETAILS_DATA:
 		let allBooks = state[action.source].books;
@@ -184,7 +186,7 @@ function reducer(state = defaultState, action){
 					temporaryBooksTable: [...storageData]
 				}
 			};
-		};
+		}
 		break;
 	case CONSTANTS.REMOVE_FROM_WISHLIST:
 		storageData = getWishListData();

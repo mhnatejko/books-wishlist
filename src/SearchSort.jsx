@@ -9,7 +9,6 @@ import {
 	requestApi, 
 	sortBy 
 } from './redux/actions';
-import { fileMaker } from './special_functions/download_function';
 
 const SearchSort = ({ 
 	source,
@@ -43,6 +42,7 @@ const SearchSort = ({
 					</input>                         
 					<button id="search_btn" disabled={source === 'browserData' ? false : true} onClick={() => search(searchValue, source)}>search</button>
 				</div>  
+
 				<div className='search-sort__sort-panel'>        
 					<p className='search-sort__etiquette' >sort by:</p>  
 					<div onClick={e => sortBy(e.target.value, source)}>
