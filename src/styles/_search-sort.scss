@@ -1,9 +1,8 @@
 @import './_constants.scss';
 
-.search-sort {   
-    //padding: $padding-comp;
+.search-sort {  
     grid-area: search-sort;
-    background:  #00000069;
+    background:  $dark-transparent;
     font-size: 1.1rem;
     padding: .5rem;
     display: flex;
@@ -18,45 +17,42 @@
             margin: .1rem;
             & div {
                 margin-left: 1rem;
-            }
-        };
-       
+            };
+        };       
     };
+
     h3 {
          width: 100%;
          text-align: center; 
          margin: 0;
-    }
-    & * {
-        //margin: .5rem 0 ;
-        
-    }
+    };
+
     &__sort-panel, 
     &__filter-panel {
-        border-top: none;        
-        //margin: 2rem 0;
+        border-top: none;   
         flex: 1;
-    }
+    };
+
     &__etiquette {
         // font-weight: 800 ;
-    }
+    };
 
     label {
-        margin: 0 .8rem;
-        
-    }
-    input {
-            
+        margin: 0 .8rem;        
+    };
+
+    input {            
         flex-grow: 1;
-    }
-    input[type=text]{
-        border: none;
-        background: $dark-font;
-        box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.534);
+    };
+
+    input[type=text] {
         padding: .5rem;
-        color: white;
+        border: none;
         border-bottom: 1px solid transparent;
         border-radius: 0;
+        background: $dark-font;
+        box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.534);
+        color: white;       
 
         &:focus {
             border: none;
@@ -64,45 +60,38 @@
             box-shadow: 0;
             border-radius: 0;
             //border: 2px solid red;
-        }
+        };
+
+       
 
         &:disabled {
-            background: $dark-font;
+            @include disabled-form;
+
             &::placeholder {
-             color: lighten($dark-font, 10%);   
-            }
-        }
+             color: darken($dark-font, 12%);   
+            };
+        };
+    };
 
-    
-        
-    }
-
-    // input[type=radio]{
-    //     background: black;
-    // }
-    
+    input[type="radio"]{
+        background: black;
+    };
+    button:disabled {
+        @include disabled-form;        
+        color: darken($dark-font, 12%);
+                
+    };
 }
 
-
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {   
-    .search-sort {
-       
-    }
-}
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {  
-    .search-sort {
-       
+    .search-sort {       
         &__sort-panel, 
         &__filter-panel {
             margin: .2rem;
-        }
+        };
     };     
-} ;
+};
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .search-sort {
         
@@ -110,40 +99,36 @@
         &__form {
             & > * {
                 display: flex;
-                flex-direction: column;                
-                margin: .1rem;           
+                flex-direction: column;
             };           
         };
+
         &__sort-panel, 
         &__filter-panel {
-         border-top: 1px solid rgba(0, 0, 0, 0.404);
-        margin: 1rem 0;        
-        padding-top: 1rem;
-    }
-        input {          
-            margin-top: 1rem
-        }
-    };
-} ;
+            border-top: 1px solid rgba(0, 0, 0, 0.404);
+            margin: 1rem 0;        
+            padding-top: 1rem;
+        };
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) { 
-    
-} ;
-/* Extra large devices (large laptops and desktops, 1200px and up) */
+        input[type='text'] {          
+            margin-top: 1rem
+        };
+    };
+};
+
 @media only screen and (min-width: 1200px) {  
     .search-sort {
        
             padding: 1rem;
+
             &__form {
                 display: flex;
                 flex-direction: column;
+
                 & * {
                     display: flex;
                     flex-direction: row;    
                 };
-            };
-    
-        };
-         
+            };    
+    };         
 };

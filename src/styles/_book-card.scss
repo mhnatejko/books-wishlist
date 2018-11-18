@@ -1,20 +1,18 @@
 @import './_constants.scss';
 
-@media only screen and (max-width: 600px) {
-
-    
-    .book-card--wishListData, .book-card--leftBarData, .book-card--browserData {
-        padding: 1rem;
-        margin: 1rem 0;
-        background: $dark-transparent;
-        display: grid;
-        grid-template-rows: 1fr min-content min-content;
-        grid-template-columns: 1fr minmax(min-content , 3fr);
-        grid-template-areas: 
-        "image info"
-        "more more"
-        "details details";
-        position: relative;
+.book-card--wishListData, .book-card--leftBarData, .book-card--browserData {
+    display: grid;
+    grid-template-rows: 1fr min-content min-content;
+    grid-template-columns: 1fr minmax(min-content , 3fr);
+    grid-template-areas: 
+    "image info"
+    "more more"
+    "details details";    
+    margin: 1rem 0;
+    padding: 1rem;
+    position: relative;    
+    background: $dark-transparent;
+        
         & > * {
             padding: .5rem;
         };
@@ -39,42 +37,47 @@
         };
     
         &__tag {
-            background: rgb(44, 46, 46);
             display: inline-block;
             margin: 2px;
+            background: rgb(44, 46, 46);            
         };
+
         &__btn {
             position: absolute;
-            font-size: 2rem;
             right: 0;
             top: 0;
-            // width: 2rem;
-            // height: 2rem;
+            width: 1.5rem;
             margin-right: .7rem;
             padding: 0;
+            font-size: 2rem;            
             border: none;
-            width: 1.5rem;
+            
             &--plus {
-                background-color: rgba($dark-font, 0.2);
-            }
+                background-color: darken($dark-font, 10%);
+            };
     
             &--minus {
-                background-color: rgba($dark-font, 0.2);
-            }
-        }
-                
-    }
+                background-color: $light-font;
+                color: $dark-font;
+            };
+        };                
+    };
+
+    .book-card--wishListData, .book-card--browserData {
+        font-size: 1.4rem;
+    };
+
     .book-card--leftBarData {
-        //border-right: 1px solid rgba(255, 255, 255, 0.301);
+        grid-template-columns: 1fr 10rem;
+        grid-template-rows: 1fr;
         margin: .25rem;
-        padding: 0.5rem;
-        background: $dark-transparent;
-        height: auto;
-        position: relative;
-        grid-template-columns: 1fr 11rem;
+        padding: 0.5rem;  
+
+        &__details {
+            display: none;            
+        };
 
         &__image {
-            //position: absolute;
             padding: 0
         };
 
@@ -82,218 +85,46 @@
           &--date {
             display: none;
           };
+
            &--title {
             font-size: 1rem;
-           };
-           
+           };           
         };
 
         &__more-btn {
             display: none;            
         };
-        
-        &__btn {
-            &--plus {
-                background-color: darken($dark-font, 10%);
-            }
-    
-            &--minus {
-                background-color: $light-font
-            }
-        }
+    };
 
-    }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {  
-    .book-card--wishListData, .book-card--browserData {
-        padding: 1rem;
-        margin: 1rem 0;
-        background: $dark-transparent;
-        display: grid;
-        grid-template-rows: 1fr min-content min-content;
-        grid-template-columns: 1fr minmax(min-content , 3fr);
-        grid-template-areas: 
-        "image info"
-        "more more"
-        "details details";
-        position: relative;
-        & > * {
-            padding: .5rem;
-        };
-
-        &__image {
-            grid-area: image;
-        };
-    
-        &__info {
-            grid-area: info;
-            &--title {
-                font-size: 1.5rem;
-            }
-        };
-    
-        &__more-btn {
-            grid-area: more;
-        };
-    
-        &__details {
-            grid-area: details;
-        };
-    
-        &__tag {
-            background: rgb(44, 46, 46);
-            display: inline-block;
-            margin: 2px;
-        };
-        
-        &__btn {
-            position: absolute;
-            font-size: 2rem;
-            right: 0;
-            top: 0;
-            // width: 2rem;
-            // height: 2rem;
-            margin-right: .7rem;
-            padding: 0;
-            border: none;
-            width: 1.5rem;
-            &--plus {
-                background-color: rgba($dark-font, 0.2);
-            }
-    
-            &--minus {
-                background-color: rgba($dark-font, 0.2);
-            }
-        }
-    }
-
+@media only screen and (min-width: 600px) {     
     .book-card--leftBarData { 
-        background: $dark-transparent;
-        padding: 1rem;
-        margin: 1rem 0;
         display: flex;
         flex-direction: column;
         position: relative;
+        margin: 1rem 0;
+        padding: 1rem;
 
         &__btn {
-            position: absolute;
-            font-size: 2rem;
-            right: 0;
-            top: 0;
-            // width: 2rem;
-            // height: 2rem;
-            margin-right: .7rem;
-            padding: 0;
-            border: none;
-            width: 1.5rem;
-        }
+            font-size: 2rem;   
+        };
 
         &__info--title {
             font-size: 1.2rem;
-        }
+        };
 
         &__image {
             align-self: center;
-        }
-        &__more-btn {
-            display: none;            
         };
-    }
-} 
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .book-card--wishListData, .book-card--browserData {
-        margin: 1rem 0;
-    }
-
-    .book-card--leftBarData { 
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: 1rem;
-    padding: 1rem;
-    &__btn {
-        position: absolute;
-        font-size: 2rem;
-        right: 0;
-        top: 0;
-        // width: 2rem;
-        // height: 2rem;
-        margin-right: .7rem;
-        padding: 0;
-        border: none;
-
-        &--plus {
-            //background-color: rgba($dark-font, 0.2);
-        }
-
-        &--minus {
-            //background-color: $light-font
-        }
-    }
-
-    &__more-btn {
-        display: block;            
     };
-} 
+};
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) { 
-    .book-card--wishListData, .book-card--browserData {
-        margin: 1rem 0;
-    }
-    .book-card--wishListData, .book-card--leftBarData, .book-card--browserData {
-        //border: 1px solid rgba(255, 255, 255, 0.301);
-        
-        padding: 1rem;
-        background: $dark-transparent;
-        position: relative;
-        display: grid;
-        grid-template-rows: 1fr min-content min-content;
-        grid-template-columns: 1fr minmax(min-content , 3fr);
-        grid-template-areas: 
-        "image info"
-        "more more"
-        "details details";
-        & > * {
-            padding: .5rem;
-        }
-        &__image {
-            grid-area: image;
-        };
-    
-        &__info {
-            grid-area: info;
-        };
-    
-        &__more-btn {
-            grid-area: more;
-        }
-    
-        &__details {
-            grid-area: details;
-        };
-    
-        &__tag {
-            background: rgb(44, 46, 46);
-            display: inline-block;
-            margin: 2px;
-        };
-       
-        }
-        
-    }
-
-    .book-card--leftBarData {
+@media only screen and (min-width: 768px) {   
+    .book-card--leftBarData { 
         margin: 1rem;
-    }
-} 
+   
+        &__more-btn {
+            display: block;            
+        };
+    };
+};
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {  
-
-    
-}

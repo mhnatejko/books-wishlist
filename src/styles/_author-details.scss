@@ -1,32 +1,26 @@
 .author {
-    background: $dark-transparent;
-    padding: 1rem;
-    font-size: 1.3rem;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
+    font-size: 1.4rem;
+    background: $dark-transparent;  
+
     h1 {
         margin: 2rem;
-    }
+    };
+
     &__main-info {
         h3 {
             margin-right: 2rem;
-        }
+        };
+
         div * {
             display: inline;
-        }
+        };
+
         img {
             float: left;
-            margin: 0 2rem;
-            
-        }
-    }
-    // &__description{
-    
-    //     column-count: 2;
-    //     column-gap: 4rem;
-    //     column-rule: 1px solid black;
-    //     hyphens: auto;
-    // }
-   
-    
-}
+            margin-right: 2rem;            
+        };
+    };
+};

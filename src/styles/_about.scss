@@ -4,4 +4,26 @@
     background: $dark-transparent;
     padding: 1rem;
     font-size: 1.3rem;
-}
+
+    h3 {
+        margin-top: 1rem;
+    };
+
+    p {
+        margin-bottom: .5rem;
+        margin-left: .5rem;
+        &::first-letter {
+            font-size: 1.5rem;
+            font-weight: 600;
+        };
+    };
+    
+    li {
+        margin-left: 2rem;
+    };
+
+    a {
+        text-decoration: underline;
+        cursor: pointer;
+    };
+};
