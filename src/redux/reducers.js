@@ -9,13 +9,14 @@ const defaultState = {
 	searchValue: undefined,
 	filterValue: undefined,
 	filterGroup: 'best_book_title',
-	temporaryBooksTable: undefined,
+	
 	leftBarValue: dayOrMonth(),
 	authorDetails: {
 		loading: false,
 		data: []
 	},
 	browserData: {
+		temporaryBooksTable: undefined,
 		loading: false,
 		books: []
 	},
@@ -23,7 +24,8 @@ const defaultState = {
 		loading: false,
 		books: []
 	},
-	wishListData: {    
+	wishListData: {   
+		temporaryBooksTable: getWishListData(), 
 		loading: false,
 		books: getWishListData()
 	},
@@ -78,9 +80,10 @@ function reducer(state = defaultState, action){
 					...state, 
 					[action.source]: {
 						...state[action.source], 
-						books:action.data
+						books:action.data,
+						temporaryBooksTable: action.data
 					},
-					temporaryBooksTable: action.data
+					
 				};				
 			}else{
 				return {
@@ -156,7 +159,7 @@ function reducer(state = defaultState, action){
 			...state,
 			[action.source]: {
 				...state[action.source],
-				books: [...state.temporaryBooksTable.filter(
+				books: [...state[action.source].temporaryBooksTable.filter(
 					book => book[action.filterGroup].toLowerCase().includes(action.filterValue.toLowerCase())
 				)]
 			}
@@ -177,7 +180,8 @@ function reducer(state = defaultState, action){
 				...state,
 				[action.source]: {
 					...state[action.source],
-					books: [...storageData]
+					books: [...storageData],
+					temporaryBooksTable: [...storageData]
 				}
 			};
 		};
