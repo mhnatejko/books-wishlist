@@ -1,25 +1,24 @@
 @import './_constants.scss';
-$padding-comp: 2rem;
+
 *, 
 *::before, 
 *::after {
-    padding: 0;
     margin: 0;
+    padding: 0;    
     box-sizing: inherit;
-}
+};
 
 html {
     box-sizing: border-box;
-    font-size: 62.5%
-}
+    font-size: 62.5%;
+};
 
 body {
-    font-family: sans-serif;
-    //color: rgb(44, 46, 46);
-    color: $light-font;
-    font-weight: 300;
-    line-height: 1.6;
     height: 100vh;
+    font-family: sans-serif;
+    font-weight: 300;
+    color: $light-font;
+    line-height: 1.6;
     background-image: url('./photo-1515125520141-3e3b67bc0a88.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -33,27 +32,23 @@ body {
         text-decoration: none;
         text-decoration-line: underline;
         color: $light-font;
-    }
+    };
+
     a:hover {
         color: lighten($light-font, 30%);
-        // /background-image: linear-gradient() ;
-    }
+    };
 
     button {
-        //background: $dark-font;
+        padding: .2rem;
         background: transparent;
         border: 1px solid $light-font;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         color: $light-font;
-        padding: .2rem;
-
+        
         &:hover {
             cursor: pointer;
             background: lighten($dark-font, 10%);
-        }
-    }    
-}
+        };
+    };    
+};
 
-.main {    
-    grid-area: main;
-}

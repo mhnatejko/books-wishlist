@@ -1,6 +1,5 @@
 @import './_constants.scss';
 
-$padding-comp: 2rem;
 
 .sorted-component {
     
@@ -8,99 +7,61 @@ $padding-comp: 2rem;
     grid-template-columns: 1fr minmax(min-content, max-content);
     grid-template-rows: 1fr;
     grid-template-areas: 
-    "sorted-component_content search-sort";
+        "sorted-component_content search-sort";
     grid-gap: 2rem;
 
     &_content {
-        padding: $padding-comp;
+        padding: 2rem;
         grid-area: sorted-component_content;
     }
 }
 
-
-/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) { 
-    .sorted-component {
-        
-        display: grid;
+    .sorted-component {        
         grid-template-columns: 1fr;
         grid-template-rows: 25vh 1fr;
         grid-template-areas: 
-        "search-sort" 
-        "sorted-component_content";
-        grid-gap: 2rem;
-        &_content {
-            padding: $padding-comp;
-            grid-area: sorted-component_content;
-        }
-    }  
-} 
+            "search-sort" 
+            "sorted-component_content";       
+    };
+}; 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {   
     .sorted-component {
-        
-        display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 23vh 1fr;
         grid-template-areas: 
-        "search-sort" 
-        "sorted-component_content";
-        grid-gap: 2rem;
+            "search-sort" 
+            "sorted-component_content";
         &_content {
             padding: 0;
-            grid-area: sorted-component_content;
-        }
-    }  
-} 
+        };
+    };  
+}; 
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .sorted-component {
-        display: grid;
         grid-template-columns: 1fr min-content;
         grid-template-rows: 1fr;
         grid-template-areas: 
-        "sorted-component_content search-sort";
-        grid-gap: 2rem;
+            "sorted-component_content search-sort";
+        grid-gap: 1rem;
     
         &_content {
             padding: .5rem;
-            grid-area: sorted-component_content;
         }
     }
 } 
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) { 
     .sorted-component {
-        display: grid;
         grid-template-columns: 1fr minmax(min-content, max-content);
-        grid-template-rows: 1fr;
-        grid-template-areas: 
-        "sorted-component_content search-sort";
+        grid-template-rows: 1fr;      
         grid-gap: 2rem;
-    
+
         &_content {
-            padding: $padding-comp;
-            grid-area: sorted-component_content;
-        }
-    }
-} 
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {   
-}
-
-
-.wish-list__save {
-    background: $dark-transparent;
-    display: flex;
-    justify-content: flex-end;;
-    align-items: center;
-    padding: 1rem;
-    margin: 1rem 0;
-    & > * { 
-        margin: 0 .5rem;
-    }
-}
+            padding: 2rem;
+        };
+    };
+};

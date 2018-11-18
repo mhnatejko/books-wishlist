@@ -38,7 +38,8 @@
     };
 
     h3 {
-        top: 6rem;
+        position: absolute;
+        top: 5.5rem;
     };
 
     &__navigation {
@@ -58,7 +59,7 @@
 @media only screen and (min-width: 600px) {   
     .header { 
         h1, h3 {
-            top: 4rem;
+            top: 1.5rem;
         };
         h1 { 
             font-size: 6rem;
@@ -81,12 +82,12 @@
         };
 
         h1 {
-            top: 2.5rem;
+            top: 1rem;
             font-size: 8rem;            
         };
 
         h3 {
-            top: 3rem;
+            top: 1rem;
         };
 
         &__navigation {

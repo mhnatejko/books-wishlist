@@ -5,6 +5,7 @@ $footer-green: #293833;
 
 $dark-transparent: rgba(0, 0, 0, 0.692);
 
+//mixins
 @mixin disabled-form {
     cursor: not-allowed;
     background: darken($dark-font, 10%);

@@ -1,51 +1,44 @@
 @import './_constants.scss';
 
 .left-bar {   
-    padding: $padding-comp;
-    background: $dark-transparent;
     grid-area: left-bar;
+    padding: 2rem;
     display: block;
+    position: relative;
     overflow-x: hidden;
     overflow-y: scroll;
+    background: $dark-transparent;
     &::-webkit-scrollbar {
         width: .7rem;
 
         &-track {
             background-color: $dark-font;
             -webkit-box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.534);
-        }
+        };
 
         &-thumb {
             background-color: darken($dark-font, 10%);
-        }
-    }
-    position: relative;
-}
+        };
+    };    
+};
 
-
-
-
-/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {   
     .left-bar {
+        padding: .3rem;
         overflow-x: hidden;
         overflow-y: hidden;
-        padding: .3rem;
         h3 {
             position: absolute;
-        }
-    }
-} 
+        };
+    };
+} ;
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {   
     .left-bar {
-        padding: 1rem;
-        
-    }
-} 
+        padding: 1rem;        
+    };
+};
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .left-bar {
         padding: 0rem;
@@ -53,15 +46,6 @@
 
         h3 {
             margin-left: 1rem;
-        }
-    }
-} 
-
-// /* Large devices (laptops/desktops, 992px and up) */
-// @media only screen and (min-width: 992px) { 
-// } 
-
-// /* Extra large devices (large laptops and desktops, 1200px and up) */
-// @media only screen and (min-width: 1200px) {   
-// }
-
+        };
+    };
+};

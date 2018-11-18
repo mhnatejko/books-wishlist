@@ -2,11 +2,12 @@
 
 .search-sort {  
     grid-area: search-sort;
-    background:  $dark-transparent;
+    background:  2rem;
     font-size: 1.1rem;
     padding: .5rem;
     display: flex;
     flex-direction: column;
+    background: $dark-transparent;
     &__form {
         display: flex;
         flex-direction: column;
@@ -33,10 +34,6 @@
         flex: 1;
     };
 
-    &__etiquette {
-        // font-weight: 800 ;
-    };
-
     label {
         margin: 0 .8rem;        
     };
@@ -59,7 +56,6 @@
             border-bottom: 1px solid $dark-font;
             box-shadow: 0;
             border-radius: 0;
-            //border: 2px solid red;
         };
 
        
@@ -117,18 +113,21 @@
 };
 
 @media only screen and (min-width: 1200px) {  
-    .search-sort {
-       
-            padding: 1rem;
+    .search-sort {       
+        padding: 1rem;
 
-            &__form {
+        &__form {
+            display: flex;
+            flex-direction: column;
+
+            & * {
                 display: flex;
-                flex-direction: column;
-
-                & * {
-                    display: flex;
-                    flex-direction: row;    
-                };
-            };    
+                flex-direction: row;    
+            };
+        }; 
+            
+        button, label {
+            margin-top: 1rem;  
+        };
     };         
 };

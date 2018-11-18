@@ -1,7 +1,12 @@
+export const LOADER_OFF = 'LOADER_OFF';
+export const LOADER_ON = 'LOADER_ON';
+
 export const LOAD_BOOKS = 'LOAD_BOOKS';
 export const SET_NEW_DATA = 'SET_NEW_DATA';
 export const SET_DETAILS_DATA = 'SET_DETAILS_DATA';
 export const SET_AUTHOR_DETAILS = 'SET_AUTHOR_DETAILS';
+
+export const CHANGE_LEFT_BAR_VALUE = 'CHANGE_LEFT_BAR_VALUE';
 
 export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 export const CHANGE_FILTER_VALUE = 'CHANGE_FILTER_VALUE';
@@ -9,12 +14,6 @@ export const SORT_BY = 'SORT_BY';
 export const FILTER = 'FILTER';
 export const CHANGE_FILTER_GROUP = 'CHANGE_FILTER_GROUP';
 
-export const LOADER_OFF = 'LOADER_OFF';
-export const LOADER_ON = 'LOADER_ON';
-
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'; 
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
-
 export const DOWNLOAD_WISH_LIST = 'DOWNLOAD_WISH_LIST';
-
-export const CHANGE_LEFT_BAR_VALUE = 'CHANGE_LEFT_BAR_VALUE';
