@@ -8,6 +8,7 @@ import { dayOrMonth } from '../special_functions/day_of_the_week_function'
 const defaultState = {
 	searchValue: undefined,
 	filterValue: undefined,
+	filterGroup: 'best_book_title',
 	temporaryBooksTable: undefined,
 	leftBarValue: dayOrMonth(),
 	authorDetails: {
@@ -72,14 +73,24 @@ function reducer(state = defaultState, action){
 		break;
 	case CONSTANTS.SET_NEW_DATA:
 		if(action.data){
-			return {
-				...state, 
-				[action.source]: {
-					...state[action.source], 
-					books:action.data
-				},
-				temporaryBooksTable: action.data
-			};
+			if(action.source !== 'leftBarData'){				
+				return {
+					...state, 
+					[action.source]: {
+						...state[action.source], 
+						books:action.data
+					},
+					temporaryBooksTable: action.data
+				};				
+			}else{
+				return {
+					...state, 
+					[action.source]: {
+						...state[action.source], 
+						books:action.data
+					}
+				};				
+			}
 		};
 		break;
 	case CONSTANTS.SET_DETAILS_DATA:
@@ -104,7 +115,7 @@ function reducer(state = defaultState, action){
 					]
 				}
 			}
-		};
+		}
 		break;
 	case CONSTANTS.SET_AUTHOR_DETAILS:
 		return {
@@ -138,17 +149,23 @@ function reducer(state = defaultState, action){
 							)
 				}
 			};
-		};
+		}
 		break;
 	case CONSTANTS.FILTER:
 		return {
 			...state,
 			[action.source]: {
 				...state[action.source],
-				books: [...state.temporaryBooksTable].filter(
-					book => book[action.keyWord].toLowerCase().includes(state.filterValue.toLowerCase())
-				)
+				books: [...state.temporaryBooksTable.filter(
+					book => book[action.filterGroup].toLowerCase().includes(action.filterValue.toLowerCase())
+				)]
 			}
+		};			
+		break;
+	case CONSTANTS.CHANGE_FILTER_GROUP:
+		return {
+			...state,
+			filterGroup: action.value
 		};
 		break;
 	case CONSTANTS.ADD_TO_WISHLIST:
@@ -162,9 +179,9 @@ function reducer(state = defaultState, action){
 					...state[action.source],
 					books: [...storageData]
 				}
-			}
-		}
-	break;
+			};
+		};
+		break;
 	case CONSTANTS.REMOVE_FROM_WISHLIST:
 		storageData = getWishListData();
 		storageData = storageData.filter(book => book.best_book_id !== action.bookID);
@@ -176,16 +193,16 @@ function reducer(state = defaultState, action){
 				books: [...storageData]
 			}
 		}
-	break;
+		break;
 	case CONSTANTS.DOWNLOAD_WISH_LIST:
 		fileMaker();
-	break;
+		break;
 	case CONSTANTS.CHANGE_LEFT_BAR_VALUE:
 		return {
 			...state,
 			leftBarValue: action.value
 		}
-	break;
+		break;
 	default:
 		return {...state};
 		break;

@@ -2,25 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { 
+	changeFilterGroup,
 	changeFilterVal, 
 	changeSearchVal, 
 	filter, 	
 	requestApi, 
 	sortBy 
 } from './redux/actions';
+import { fileMaker } from './special_functions/download_function';
 
 const SearchSort = ({ 
 	source,
+	filterGroup,
 	filterValue, 
 	searchValue, 
+	changeFilterGroup,
 	changeFilterVal, 
 	changeSearchVal,
 	filter,
 	search,
 	sortBy	
 }) => {
-	
-	var testRef = React.createRef();
 	
 	return (
 		<div className='search-sort'>
@@ -50,11 +52,12 @@ const SearchSort = ({
 						<label htmlFor='sort_year'><input type='radio' value='original_publication_year' name='sort' id="sort_year"/>premier</label>
 					</div>
 				</div>
+
 				<div className='search-sort__filter-panel'>
 					<p className='search-sort__etiquette' >filter by:</p> 	
-					<div>
-						<label htmlFor='filter_title'><input ref={testRef} type='radio' value='best_book_title' name='filter' id='filter_title'/>title</label>
-						<label htmlFor='filter_author'><input ref={testRef} type='radio' value='best_book_author_name' name='filter' id='filter_author'/>author</label>
+					<div onClick={e => changeFilterGroup(e)} >
+						<label htmlFor='filter_title'><input checked type='radio' value='best_book_title' name='filter' id='filter_title'/>title</label>
+						<label htmlFor='filter_author'><input  type='radio' value='best_book_author_name' name='filter' id='filter_author'/>author</label>
 					</div>
 					<input 
 						//onFocus={e => e.target.value = ""} 
@@ -66,7 +69,8 @@ const SearchSort = ({
 						onChange={
 							e => {
 								changeFilterVal(e); 
-								filter(testRef.current.value, source)						
+								filter(filterGroup, e.target.value, source);
+								console.log(filterGroup, e.target.value, source)
 							}
 						}
 					></input>
@@ -77,14 +81,16 @@ const SearchSort = ({
 };
 
 const mapStateToProps = state => ({
+	filterGroup: state.filterGroup,
 	filterValue: state.filterValue,
 	searchValue: state.searchValue	
 });
 
 const mapDispatchToProps = dispatch => ({
+	changeFilterGroup: e => dispatch(changeFilterGroup(e.target.value)),
 	changeFilterVal: e => dispatch(changeFilterVal(e.target.value)),
 	changeSearchVal: e => dispatch(changeSearchVal(e.target.value)),	
-	filter: (filterValue, source) => dispatch(filter(filterValue, source)),
+	filter: (filterGroup, filterValue, source) => dispatch(filter(filterGroup, filterValue, source)),
 	search: (searchValue, source) => dispatch(requestApi(searchValue, source)),
 	sortBy: (keyWord, source) => dispatch(sortBy(keyWord, source))
 });
@@ -93,6 +99,7 @@ SearchSort.propTypes = {
 	source: PropTypes.string,
 	filterValue: PropTypes.string, 
 	searchValue: PropTypes.string, 
+	changeFilterGroup: PropTypes.func,
 	changeFilterVal: PropTypes.func, 
 	changeSearchVal: PropTypes.func,
 	filter: PropTypes.func,

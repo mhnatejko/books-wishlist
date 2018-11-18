@@ -7,6 +7,7 @@ export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 export const CHANGE_FILTER_VALUE = 'CHANGE_FILTER_VALUE';
 export const SORT_BY = 'SORT_BY';
 export const FILTER = 'FILTER';
+export const CHANGE_FILTER_GROUP = 'CHANGE_FILTER_GROUP';
 
 export const LOADER_OFF = 'LOADER_OFF';
 export const LOADER_ON = 'LOADER_ON';

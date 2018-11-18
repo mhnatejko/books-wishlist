@@ -123,11 +123,17 @@ export const sortBy = (keyWord, source) => ({
     source
 });
 
-export const filter = (keyWord, source) => ({
+export const filter = (filterGroup, filterValue, source) => ({
     type: CONSTANTS.FILTER,
-    keyWord,
-    source
+    filterGroup,
+    filterValue,
+    source    
 });
+
+export const changeFilterGroup = value => ({
+    type: CONSTANTS.CHANGE_FILTER_GROUP,
+    value
+})
 
 export const addToWishList = (data) => ({
     type: CONSTANTS.ADD_TO_WISHLIST,
