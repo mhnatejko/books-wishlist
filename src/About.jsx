@@ -26,7 +26,7 @@ const About = () => {
 			Project, idea and all elements designed by author and inspired by many websites</p>
 			<p>Full project on github: <a href='https://github.com/mhnatejko/books-wishlist'>https://github.com/mhnatejko/books-wishlist</a></p>
 			<p>Data suported by goodreads database.</p>
-			<p>Authors quotations from <a gref='https://goodquotesapi.herokuapp.com'>https://goodquotesapi.herokuapp.com</a></p>
+			<p>Authors quotations from <a href='https://goodquotesapi.herokuapp.com'>https://goodquotesapi.herokuapp.com</a></p>
 			<p>Picture in background and icons from: </p>
 			<p><a href='https://fontawesome.com'>https://fontawesome.com</a></p>
 			<p><a href='https://unsplash.com'>https://unsplash.com</a></p>

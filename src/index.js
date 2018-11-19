@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import Routing from './Routing';
 import thunk from 'redux-thunk';
-import * as serviceWorker from './serviceWorker';
+import Routing from './Routing';
 import reducer from './redux/reducers';
 import './styles/index.scss';
 
@@ -19,4 +18,5 @@ const store = createStore(
 ReactDOM.render(
 	<Provider store={store}>
 		<Routing />
-	</ Provider>, document.getElementById('root'));
+	</ Provider>, document.getElementById('root')
+);
