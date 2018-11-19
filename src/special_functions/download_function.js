@@ -12,10 +12,7 @@ export function fileMaker(){
 
 	function prepareURL(text){  		
 		let data = new Blob([text], {type: 'text/plain'});        
-		let textFile = window.URL.createObjectURL(data);        
-		if (textFile !== null) {
-			window.URL.revokeObjectURL(textFile);
-		} ; 
+		let textFile = window.URL.createObjectURL(data);  
 		return textFile;
 	};
 

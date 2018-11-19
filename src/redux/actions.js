@@ -147,10 +147,6 @@ export const removeFromWishList = (bookID, source) => ({
 	source
 });
 
-export const downloadWishList = () => ({
-	type: CONSTANTS.DOWNLOAD_WISH_LIST
-});
-
 export const changeLeftBarValue = value => ({
 	type: CONSTANTS.CHANGE_LEFT_BAR_VALUE,
 	value

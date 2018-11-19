@@ -200,9 +200,6 @@ function reducer(state = defaultState, action){
 			}
 		}
 		break;
-	case CONSTANTS.DOWNLOAD_WISH_LIST:
-		fileMaker();
-		break;
 	case CONSTANTS.CHANGE_LEFT_BAR_VALUE:
 		return {
 			...state,
