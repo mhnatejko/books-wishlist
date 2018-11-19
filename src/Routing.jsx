@@ -12,7 +12,7 @@ import WishList from './WishList';
 
 const Routing = () => {
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<div className='content'>
 				<Header />					
 				<Switch>
