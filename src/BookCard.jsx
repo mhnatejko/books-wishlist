@@ -37,7 +37,7 @@ const BookCard = ({
 			}
 			<div className={`book-card--${source}__info`}>
 				<Link to='/author'> 
-					<p onClick={() => requestAuthorDatails(data.best_book_author_id)}>{data.best_book_author_name}</p>
+					<p onClick={() => requestAuthorDatails(data.best_book_author_id, data.best_book_author_name)}>{data.best_book_author_name}</p>
 				</Link>
 				<h4 className={`book-card--${source}__info--title`}>{data.best_book_title}</h4>
 				{data.best_book_title !== data.details && <p>{data.original_title}</p>}
@@ -83,7 +83,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	addToWishList: (data) => dispatch(addToWishList(data)),
 	removeFromWishList: (bookID, source) => dispatch(removeFromWishList(bookID, source)),
-	requestAuthorDatails: (authorID) => dispatch(requestAuthorDetailsApi(authorID, 'authorDetails')),
+	requestAuthorDatails: (authorID, authorName) => dispatch(requestAuthorDetailsApi(authorID, authorName, 'authorDetails')),
 	requestDetailsApi: (bookID, source) => dispatch(requestDetailsApi(bookID, source))
 });
 

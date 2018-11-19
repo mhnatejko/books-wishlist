@@ -1,6 +1,9 @@
 @import './_constants.scss';
 
 .search-sort {  
+    h3 {
+       @include section-headers;
+    };
     grid-area: search-sort;
     background:  2rem;
     font-size: 1.1rem;
@@ -90,7 +93,6 @@
 
 @media only screen and (min-width: 768px) {
     .search-sort {
-        
         padding: .3rem;     
         &__form {
             & > * {
@@ -110,6 +112,12 @@
             margin-top: 1rem
         };
     };
+
+    #search_btn{
+        display: inline-block;
+        text-align: center;
+        
+    }
 };
 
 @media only screen and (min-width: 1200px) {  

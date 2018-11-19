@@ -8,6 +8,10 @@
     overflow-x: hidden;
     overflow-y: scroll;
     background: $dark-transparent;
+    h3 {
+        @include section-headers;
+    };
+    
     &::-webkit-scrollbar {
         width: .7rem;
 

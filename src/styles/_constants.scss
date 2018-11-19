@@ -11,4 +11,10 @@ $dark-transparent: rgba(0, 0, 0, 0.692);
     background: darken($dark-font, 10%);
     color: darken($dark-font, 12%);
     border-color:  darken($dark-font, 12%);
-}
+};
+
+@mixin section-headers {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: inherit;
+    font-size: 2rem
+};

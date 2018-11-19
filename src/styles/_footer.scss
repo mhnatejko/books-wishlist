@@ -7,6 +7,8 @@ $padding-comp: 2rem;
     display: flex;
     flex-direction: row;
     position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.5rem;
 
     * {
         margin: 0 1rem;
@@ -15,7 +17,7 @@ $padding-comp: 2rem;
 
     h5 {
         margin: 0;
-        
+        font-weight: inherit;        
     }
     
     div {
@@ -25,6 +27,7 @@ $padding-comp: 2rem;
         background-size: contain;
         width: 70px;
         height: 2rem;
+        margin-top: .3rem;
     }
     p {
         position: absolute;

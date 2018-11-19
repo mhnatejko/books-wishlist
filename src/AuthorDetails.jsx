@@ -6,7 +6,7 @@ import { requestApi } from './redux/actions';
 import SpinnerComponent from './SpinnerComponent';
 
 
-const AuthorDetails = ({ data, loading, search }) => {
+const AuthorDetails = ({ data, loading, quotes, search }) => {
 	return (
 		<section className='main author'>
 			{
@@ -40,9 +40,12 @@ const AuthorDetails = ({ data, loading, search }) => {
 									)}</div>}  
 									<br/>        
 									<p>Check {data.works_count} records of {data.link && <a href={data.link}>author on goodreads</a>}</p>
-								</div>
-						}  
-				
+									<br/>
+									<div className='author__quotes'>
+										{quotes && quotes.length > 0 && <blockquote>"{quotes[Math.floor(Math.random() * quotes.length)].quote}"	</blockquote> }
+									</div>
+								</div>								
+						}  				
 					</div>
 					: <p>No author choosed</p> 
 			}
@@ -55,7 +58,8 @@ const AuthorDetails = ({ data, loading, search }) => {
 
 const mapStateToProps = state => ({
 	data: state['authorDetails'].data,
-	loading: state['authorDetails'].loading
+	loading: state['authorDetails'].loading,
+	quotes: state['authorDetails'].quotes.quotes 
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -65,6 +69,7 @@ const mapDispatchToProps = dispatch => ({
 AuthorDetails.propTypes = {
 	data: PropTypes.array,
 	loading: PropTypes.bool,
+	quotes: PropTypes.array,
 	search: PropTypes.func
 };
 

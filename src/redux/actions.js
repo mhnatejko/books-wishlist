@@ -64,7 +64,7 @@ export function requestApi(keyWord, source){
 				dispatch(loaderOff(source))
 			})     
 			.catch(err => console.log(err))                
-	}   
+	}; 
 };
 
 export function requestDetailsApi(bookID, source){
@@ -88,15 +88,20 @@ export function requestDetailsApi(bookID, source){
 				dispatch(loaderOff(source));
 			})
 			.catch(err => console.log(err));
-	}
+	};
 };
 
 export const setAuthorDetails = data => ({
 	type: CONSTANTS.SET_AUTHOR_DETAILS,
 	data
-})
+});
 
-export function requestAuthorDetailsApi(authorID, source){
+export const setAuthorDetailsQuotes = quotesData => ({
+	type: CONSTANTS.SET_AUTHOR_DETAILS_QUOTES,
+	quotesData
+});
+
+export function requestAuthorDetailsApi(authorID, authorName, source){
 	return function(dispatch){
 		dispatch(loaderOn(source));
 		fetch(FETCHING.authorDetails(authorID), FETCHING.fetchOptions)
@@ -112,10 +117,17 @@ export function requestAuthorDetailsApi(authorID, source){
 					)
 				);
 				dispatch(loaderOff(source));
+				fetch(`https://goodquotesapi.herokuapp.com/author/${authorName.split(' ').join('+')}`)
+					.then(res => res.text())
+					.then(res => {
+						dispatch(
+							setAuthorDetailsQuotes(JSON.parse(res))
+						);
+					});
 			})
 			.catch(err => console.log(err))
-	}
-}
+	};
+};
 
 export const sortBy = (keyWord, source) => ({
 	type: CONSTANTS.SORT_BY,
@@ -133,7 +145,7 @@ export const filter = (filterGroup, filterValue, source) => ({
 export const changeFilterGroup = value => ({
 	type: CONSTANTS.CHANGE_FILTER_GROUP,
 	value
-})
+});
 
 export const addToWishList = (data) => ({
 	type: CONSTANTS.ADD_TO_WISHLIST,
@@ -150,5 +162,5 @@ export const removeFromWishList = (bookID, source) => ({
 export const changeLeftBarValue = value => ({
 	type: CONSTANTS.CHANGE_LEFT_BAR_VALUE,
 	value
-})
+});
 

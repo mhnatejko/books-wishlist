@@ -23,4 +23,17 @@
             margin-right: 2rem;            
         };
     };
+
+    &__quotes {
+        margin: 2rem 8rem 4rem 8rem;
+        padding: 2rem;
+        border-top: 1px solid $light-font;
+        border-bottom: 1px solid $light-font;
+        font-style: italic;
+        text-align: center;
+        
+        &::first-letter {
+            font-size: 2rem;
+        }
+    };
 };

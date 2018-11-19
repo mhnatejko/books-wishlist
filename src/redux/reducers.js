@@ -13,7 +13,8 @@ const defaultState = {
 	leftBarValue: dayOrMonth(),
 	authorDetails: {
 		loading: false,
-		data: []
+		data: [],
+		quotes: []
 	},
 	browserData: {
 		temporaryBooksTable: undefined,
@@ -129,7 +130,17 @@ function reducer(state = defaultState, action){
 				...state.authorDetails,
 				data: action.data
 			}
-		}
+		};
+		break;
+	case CONSTANTS.SET_AUTHOR_DETAILS_QUOTES:
+		return {
+			...state,
+			authorDetails: {
+				...state.authorDetails,
+				quotes: action.quotesData
+			}
+		};
+		break;
 	case CONSTANTS.SORT_BY:
 		if(state[action.source].books){
 			return {
