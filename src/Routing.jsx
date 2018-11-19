@@ -12,15 +12,15 @@ import WishList from './WishList';
 
 const Routing = () => {
 	return (
-		<BrowserRouter basename={process.env.PUBLIC_URL}>
+		<BrowserRouter>
 			<div className='content'>
 				<Header />					
 				<Switch>
-					<Route exact path= "/" component={Home}/>
-					<Route path= "/browser" component={Browser}/>
-					<Route path= "/wish-list" component={WishList}/>
-					<Route path= "/about" component={About}/>
-					<Route path= "/author" component={AuthorDetails}/>
+					<Route exact path={`${process.env.PUBLIC_URL}/`} component={Home}/>
+					<Route path={`${process.env.PUBLIC_URL}/browser`} component={Browser}/>
+					<Route path={`${process.env.PUBLIC_URL}/wish-list`} component={WishList}/>
+					<Route path={`${process.env.PUBLIC_URL}/about`} component={About}/>
+					<Route path={`${process.env.PUBLIC_URL}/author`} component={AuthorDetails}/>
 					<Route component={NoMatch}/>                
 				</Switch>
 				<LeftBar />
