@@ -25,7 +25,7 @@ const BookCard = ({
 		<div key={data.best_book_id} className={`book-card--${source}`}>
 			<div className={`book-card--${source}__image`}>
 				{
-					data.best_book_image_url 
+					!!data.best_book_image_url 
                 && !data.best_book_image_url.includes('nophoto') 
                 && <img src={data.best_book_image_url} alt={data.best_book_title} />
 				}
@@ -44,8 +44,8 @@ const BookCard = ({
             
 				
             
-				{data.details && <p>publisher: {data.publisher}</p>}
-				{data.details ? 
+				{!!data.details && <p>publisher: {data.publisher}</p>}
+				{!!data.details ? 
 					<p className={`book-card--${source}__info--date`}>publication date: {data.publication_day}.{data.publication_month}.{data.original_publication_year}</p> 
 					: 
 					<p className={`book-card--${source}__info--date`}>publication date: {data.original_publication_year}</p>
@@ -57,16 +57,16 @@ const BookCard = ({
 				}
 			</div>
 			{!data.details && <button className={`book-card--${source}__more-btn`} onClick={() => requestDetailsApi(data.best_book_id, source)}>more</button>}
-			{data.detailsLoading && <SpinnerComponent />}
+			{!!data.detailsLoading && <SpinnerComponent />}
 			<div className={`book-card--${source}__details`}>
-				{data.details && 
+				{!!data.details && 
 					<div>                    
 						<p>country: {data.country}</p> 
 						<p>language: {data.language_code}</p>
 						<div dangerouslySetInnerHTML={{__html: data.description}} />
 						<p>tags:</p>
 						<div className={`book-card--${source}__tags`}>
-							{data.tags && data.tags.map((tag, i) => <p key={i} className={`book-card--${source}__tag`}>{tag['_attributes'].name}</p>)}
+							{!!data.tags && data.tags.map((tag, i) => <p key={i} className={`book-card--${source}__tag`}>{tag['_attributes'].name}</p>)}
 						</div>
 						<a href={data.book_link}>book on goodereads</a>
 					</div>            

@@ -7,7 +7,7 @@ import SpinnerComponent from './SpinnerComponent';
 import { fileMaker } from './special_functions/download_function';
 
 const source = 'wishListData';
-const WishList = ({ books, fetching, downloadWishList }) => { //
+const WishList = ({ books, fetching }) => {
 	return (
 		<section className='main sorted-component wish-list'>
 			<SearchSort source={source}/>
@@ -18,7 +18,7 @@ const WishList = ({ books, fetching, downloadWishList }) => { //
 					<button download="wishList.txt" onClick={() => fileMaker()}>save <span className="fas fa-file-download"/> {/*&#8681;*/}</button>
 				</div>
 				{
-					fetching 
+					!!fetching 
 						? 
 						<SpinnerComponent />
 						:

@@ -14,7 +14,7 @@ const Browser = ({ books, loading }) => {
 			<div className='sorted-component_content'>
 				<h1>Search books or authors</h1>
 				{
-					loading 
+					!!loading 
 						? 
 						<SpinnerComponent />
 						:

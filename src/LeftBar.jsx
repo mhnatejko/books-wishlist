@@ -21,7 +21,7 @@ class LeftBar extends Component {
 			<aside className='left-bar'>
 				<h3>Suggestions for today</h3>
 				{
-					this.props.loading 
+					!!this.props.loading 
 						? 
 						<SpinnerComponent />
 						:

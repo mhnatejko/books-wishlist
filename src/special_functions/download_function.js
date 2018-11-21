@@ -19,5 +19,6 @@ export function fileMaker(){
 	let anchor = document.createElement('a');
 	anchor.setAttribute('href', prepareURL(listDataCreator()));    
 	anchor.setAttribute('download', 'Book_Wish_List.txt');    
-	anchor.click();
+	document.querySelector('body').appendChild(anchor).click();	
 };
+

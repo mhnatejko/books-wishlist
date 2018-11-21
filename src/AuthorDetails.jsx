@@ -10,11 +10,11 @@ const AuthorDetails = ({ data, loading, quotes, search }) => {
 	return (
 		<section className='main author'>
 			{
-				data ?
+				!!data ?
 					<div>
 						<h1>Informations about author</h1>
 						{
-							loading 
+							!!loading 
 								? 
 								<SpinnerComponent />
 								:
@@ -23,7 +23,7 @@ const AuthorDetails = ({ data, loading, quotes, search }) => {
 										<img src={data.image_url} alt={data.name}/>
 										<div>
 											<h3>{data.name}</h3>
-											{data.born_at && <p>({data.born_at} - {data.died_at})</p>}
+											{!!data.born_at && <p>({data.born_at} - {data.died_at})</p>}
 											<br/>
 											<p>{data.hometown}</p>
 											
@@ -32,8 +32,8 @@ const AuthorDetails = ({ data, loading, quotes, search }) => {
 									<br/>
 									<div className='author__description' dangerouslySetInnerHTML={{__html: data.about}}/>    
 									<br/>
-									{data.gender && <p>Some of {data.gender === 'male' ? 'his': 'her'} publications:</p>}
-									{data.books && <div>{data.books.map(book => 
+									{!!data.gender && <p>Some of {data.gender === 'male' ? 'his': 'her'} publications:</p>}
+									{!!data.books && <div>{data.books.map(book => 
 										<Link to='/browser'>
 											<p onClick={() => search(book, 'browserData')}>{book}</p>
 										</Link>
@@ -42,7 +42,7 @@ const AuthorDetails = ({ data, loading, quotes, search }) => {
 									<p>Check {data.works_count} records of {data.link && <a href={data.link}>author on goodreads</a>}</p>
 									<br/>
 									<div className='author__quotes'>
-										{quotes && quotes.length > 0 && <blockquote>"{quotes[Math.floor(Math.random() * quotes.length)].quote}"	</blockquote> }
+										{!!quotes && quotes.length > 0 && <blockquote>"{quotes[Math.floor(Math.random() * quotes.length)].quote}"	</blockquote> }
 									</div>
 								</div>								
 						}  				
