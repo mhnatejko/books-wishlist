@@ -1,7 +1,5 @@
 import * as CONSTANTS from './constants';
 import { getWishListData, setWishListData } from '../special_functions/store_wishList';
-import { fileMaker } from '../special_functions/download_function';
-
 import { dayOrMonth } from '../special_functions/day_of_the_week_function'
 
 
@@ -100,11 +98,11 @@ function reducer(state = defaultState, action){
 		}
 		break;
 	case CONSTANTS.SET_DETAILS_DATA:
-		let allBooks = state[action.source].books;
-		let detailedBook = (state[action.source].books.filter(
+		var allBooks = state[action.source].books;
+		var detailedBook = (state[action.source].books.filter(
 			book => book.best_book_id === action.bookID)
 		)[0];
-		let detailedBookIndex = allBooks.indexOf(detailedBook);
+		var detailedBookIndex = allBooks.indexOf(detailedBook);
 		if(action.data){
 			return {
 				...state,
