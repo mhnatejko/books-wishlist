@@ -12,23 +12,23 @@ self.__precacheManifest = [
     "url": "/books-wishlist/static/js/runtime~main.4e630517.js"
   },
   {
-    "revision": "1cd3035a7c0d9f9c174a",
-    "url": "/books-wishlist/static/js/main.1cd3035a.chunk.js"
+    "revision": "d80dde2febb48dbbd73c",
+    "url": "/books-wishlist/static/js/main.d80dde2f.chunk.js"
   },
   {
     "revision": "17fb4ccabd0d1abe5169",
     "url": "/books-wishlist/static/js/1.17fb4cca.chunk.js"
   },
   {
-    "revision": "1cd3035a7c0d9f9c174a",
-    "url": "/books-wishlist/static/css/main.eadd3e6f.chunk.css"
+    "revision": "d80dde2febb48dbbd73c",
+    "url": "/books-wishlist/static/css/main.7df928c8.chunk.css"
   },
   {
     "revision": "17fb4ccabd0d1abe5169",
     "url": "/books-wishlist/static/css/1.4fcf4be6.chunk.css"
   },
   {
-    "revision": "cc57b3ef0d74b7a77a6dc290bdad5ec7",
+    "revision": "a48d44266c22a4bc1253f1928cf52604",
     "url": "/books-wishlist/index.html"
   }
 ];
