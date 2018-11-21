@@ -1,8 +1,6 @@
 @import './_constants.scss';
 
-
-.sorted-component {
-    
+.sorted-component {    
     display: grid;
     grid-template-columns: 1fr minmax(min-content, max-content);
     grid-template-rows: 1fr;
@@ -19,18 +17,17 @@
 @media only screen and (max-width: 600px) { 
     .sorted-component {        
         grid-template-columns: 1fr;
-        grid-template-rows: 25vh 1fr;
+        grid-template-rows: min-content 1fr;
         grid-template-areas: 
             "search-sort" 
             "sorted-component_content";       
     };
 }; 
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {   
     .sorted-component {
         grid-template-columns: 1fr;
-        grid-template-rows: 23vh 1fr;
+        grid-template-rows: min-content 1fr;
         grid-template-areas: 
             "search-sort" 
             "sorted-component_content";
@@ -50,9 +47,9 @@
     
         &_content {
             padding: .5rem;
-        }
-    }
-} 
+        };
+    };
+}; 
 
 @media only screen and (min-width: 992px) { 
     .sorted-component {
