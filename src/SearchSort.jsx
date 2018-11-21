@@ -56,7 +56,7 @@ const SearchSort = ({
 				<div className='search-sort__filter-panel'>
 					<p className='search-sort__etiquette' >filter by:</p> 	
 					<div onClick={e => changeFilterGroup(e)} >
-						<label htmlFor='filter_title'><input checked type='radio' value='best_book_title' name='filter' id='filter_title'/>title</label>
+						<label htmlFor='filter_title'><input defaultChecked type='radio' value='best_book_title' name='filter' id='filter_title'/>title</label>
 						<label htmlFor='filter_author'><input  type='radio' value='best_book_author_name' name='filter' id='filter_author'/>author</label>
 					</div>
 					<input 

@@ -61,7 +61,7 @@
     };
 };
 
-@media only screen and (max-width:600px) and (orientation: landscape) {
+@media only screen and (max-width:600px) and (orientation: landscape), (max-width:600px) and (max-height: 450px) {
     .header {
         &__navigation {             
             box-shadow: 0px 7px 30px 0px rgba(0,0,0,0.75);
